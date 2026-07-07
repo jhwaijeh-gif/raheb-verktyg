@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn-genomgång &amp; tillväxtplan, Raheb Muftee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1622;--bg2:#0c2018;--panel:#0f1d2e;--panel2:#0b1623;
+    --line:#1c2c40;--line-soft:#15212f;
+    --txt:#f1f6fb;--txt-dim:#93a6bb;--txt-faint:#5f7286;--txt-body:#c9d6e3;
+    --gold:#ecaa3c;--gold-d:#c8851f;--green:#2e8b57;--red:#c0392b;
+    --radius:14px;
+    --disp:'Oswald','Arial Narrow','Impact',system-ui,sans-serif;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);color:var(--txt);line-height:1.65;font-size:15.5px;
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(1100px 640px at 85% -12%,rgba(236,170,60,.06),transparent 60%),
+      radial-gradient(900px 600px at -5% 115%,rgba(46,139,87,.08),transparent 55%),
+      linear-gradient(160deg,var(--bg),var(--bg2));
+    min-height:100vh;
+  }
+  .page{max-width:860px;margin:0 auto;padding:0 28px 90px}
+  @media(max-width:600px){.page{padding:0 18px 60px}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:110px 0 70px;position:relative}
+  .hero .brandrow{display:flex;align-items:center;gap:12px;margin-bottom:64px}
+  .logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-d));display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:19px;color:#1a1206;letter-spacing:.5px;flex:none}
+  .brandrow .bn{font-family:var(--disp);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-size:14px}
+  .brandrow .bn small{display:block;font-family:var(--font);font-weight:500;letter-spacing:1.6px;color:var(--txt-faint);font-size:9px;text-transform:uppercase;margin-top:2px}
+  .hero .eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
+  .hero h1{font-family:var(--disp);font-weight:600;text-transform:uppercase;font-size:clamp(33px,7.2vw,68px);line-height:1.02;letter-spacing:.5px}
+  .hero h1 .amp{color:var(--gold)}
+  .hero .subject{margin-top:26px;font-size:17px;color:var(--txt-dim);font-weight:500}
+  .hero .subject b{color:var(--txt);font-weight:700}
+  .hero .metaline{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--txt-faint)}
+  .hero .metaline b{color:var(--txt-dim);font-weight:600}
+  .goldline{height:2px;background:linear-gradient(90deg,var(--gold),transparent 70%);margin-top:0}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:64px 0 8px}
+  .shead{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .snum{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--gold);letter-spacing:1px;flex:none;border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);border-radius:7px;padding:3px 9px;position:relative;top:-3px}
+  h2{font-family:var(--disp);font-weight:600;text-transform:uppercase;font-size:clamp(24px,4vw,32px);letter-spacing:.5px;line-height:1.1}
+  .srule{height:1px;background:linear-gradient(90deg,color-mix(in srgb,var(--gold) 55%,transparent),var(--line) 55%,transparent);margin:16px 0 28px}
+  h3{font-family:var(--disp);font-weight:600;text-transform:uppercase;font-size:18px;letter-spacing:.8px;color:var(--txt);margin:36px 0 12px}
+  h3 .tag{color:var(--gold)}
+  h4{font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--gold);margin:26px 0 8px;font-weight:700}
+  p{color:var(--txt-body);margin-bottom:14px;max-width:72ch}
+  p b,li b{color:var(--txt)}
+  .lead{font-size:17px;color:#dde7f0;font-weight:500}
+  ul.plain{list-style:none;margin:0 0 16px}
+  ul.plain li{padding:7px 0 7px 22px;position:relative;color:var(--txt-body)}
+  ul.plain li::before{content:"";position:absolute;left:2px;top:16px;width:8px;height:2px;background:var(--gold)}
+  ol.steps{margin:0 0 16px 20px}
+  ol.steps li{padding:6px 0;color:var(--txt-body)}
+  sup.ref{font-size:10px;color:var(--gold);font-weight:700}
+  sup.ref a{color:inherit;text-decoration:none}
+
+  /* ---------- COMPONENTS ---------- */
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin:18px 0}
+  .card h4{margin-top:0}
+  .kpiband{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+  @media(max-width:680px){.kpiband{grid-template-columns:repeat(2,1fr)}}
+  .kpi{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center}
+  .kpi .n{font-family:var(--disp);font-weight:600;font-size:30px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+  .kpi .l{font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--txt-faint);margin-top:7px;line-height:1.5}
+
+  blockquote{border-left:2px solid var(--gold);padding:4px 0 4px 18px;margin:16px 0;color:#dfe8f1;font-size:15px;font-style:italic;max-width:70ch}
+  blockquote .who{display:block;font-style:normal;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt-faint);margin-top:8px}
+  blockquote .who b{color:var(--gold);font-weight:700}
+
+  .tablewrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:12px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
+  th{font-family:var(--font);font-size:10.5px;text-transform:uppercase;letter-spacing:1.3px;color:var(--gold);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--gold) 5%,transparent);font-weight:700;white-space:nowrap}
+  td{padding:11px 14px;border-bottom:1px solid var(--line-soft);color:var(--txt-body);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--txt)}
+  td .dim{color:var(--txt-faint);font-size:12px}
+
+  .draftbox{background:#091320;border:1px solid color-mix(in srgb,var(--gold) 35%,transparent);border-radius:var(--radius);padding:24px 26px;margin:18px 0;position:relative}
+  .draftbox::before{content:"FÄRDIGT UTKAST — KLISTRA IN";position:absolute;top:-9px;left:18px;background:var(--gold);color:#1a1206;font-size:9.5px;font-weight:800;letter-spacing:1.5px;padding:3px 10px;border-radius:99px}
+  .draftbox p{color:#e6edf4;font-size:14.5px}
+  .draftbox p:last-child{margin-bottom:0}
+  .draftbox .note{font-size:12.5px;color:var(--txt-faint);border-top:1px solid var(--line-soft);padding-top:12px;margin-top:14px;font-style:normal}
+
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+  @media(max-width:680px){.pillars{grid-template-columns:1fr}}
+  .pillar{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+  .pillar .pl{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .pillar .pl .bok{width:26px;height:26px;border-radius:7px;background:var(--gold);color:#1a1206;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:14px;flex:none}
+  .pillar .pl h4{margin:0;color:var(--txt);font-size:13px;letter-spacing:1px}
+  .pillar p{font-size:13.5px;margin-bottom:8px;color:var(--txt-dim)}
+  .pillar .ev{font-size:12.5px;color:var(--txt-body);border-top:1px solid var(--line-soft);padding-top:10px;margin-top:4px}
+  .pillar .ev b{color:var(--gold)}
+
+  .phase{border:1px solid var(--line);border-radius:var(--radius);margin:22px 0;overflow:hidden;background:linear-gradient(180deg,var(--panel),var(--panel2))}
+  .phase .ph{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--gold) 5%,transparent)}
+  .phase .ph .fn{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:1.5px;color:#1a1206;background:linear-gradient(135deg,var(--gold),var(--gold-d));padding:5px 12px;border-radius:7px;text-transform:uppercase;flex:none}
+  .phase .ph h3{margin:0;font-size:16px}
+  .phase .pb{padding:20px 24px 12px}
+  .gate{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--gold) 7%,transparent);border:1px solid color-mix(in srgb,var(--gold) 30%,transparent);border-radius:12px;padding:16px 18px;margin:16px 0}
+  .gate .gi{font-family:var(--disp);font-weight:700;color:var(--gold);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;flex:none;padding-top:2px}
+  .gate p{margin:0;font-size:14px;color:#e6edf4}
+
+  .truth{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft)}
+  .truth:last-child{border-bottom:none}
+  .truth .tn{font-family:var(--disp);font-weight:600;font-size:24px;color:var(--gold);flex:none;width:34px;line-height:1.2;font-variant-numeric:tabular-nums}
+  .truth div p{margin-bottom:4px;font-size:14px}
+  .truth div p:first-child{color:var(--txt);font-weight:600;font-size:14.5px}
+
+  .toolrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  @media(max-width:680px){.toolrow{grid-template-columns:1fr}}
+  .tool{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .tool h4{margin-top:0;color:var(--txt);font-size:13px}
+  .tool .role{font-size:10.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+  .tool p{font-size:13px;color:var(--txt-dim);margin-bottom:0}
+  .tool .spec{font-size:12.5px;color:var(--txt-body);border-top:1px solid var(--line-soft);padding-top:10px;margin-top:12px}
+  .tool .spec b{color:var(--gold);font-weight:700}
+
+  .cta{background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 12%,transparent),color-mix(in srgb,var(--gold) 4%,transparent));border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);border-radius:var(--radius);padding:30px 32px;margin:30px 0 10px;text-align:center}
+  .cta h3{margin:0 0 10px;font-size:22px}
+  .cta p{margin:0 auto;max-width:56ch}
+
+  .sources{font-size:13px}
+  .sources ol{margin-left:22px}
+  .sources li{padding:6px 0;color:var(--txt-dim);border-bottom:1px solid var(--line-soft)}
+  .sources li:last-child{border-bottom:none}
+  .sources li b{color:var(--txt-body)}
+  .sources .hedge{color:var(--gold);font-size:11.5px}
+
+  .footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--txt-faint)}
+
+  /* ---------- PRINT ---------- */
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    :root{
+      --bg:#ffffff;--bg2:#ffffff;--panel:#f7f5f0;--panel2:#f3f0e9;
+      --line:#d8d2c4;--line-soft:#e5e0d5;
+      --txt:#101c28;--txt-dim:#41505f;--txt-faint:#6b7684;--txt-body:#25313d;
+      --gold:#a9740f;--gold-d:#8a5c08;
+    }
+    body{background:#fff !important;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .page{max-width:none;padding:0}
+    .hero{padding:26mm 0 14mm}
+    .hero h1{font-size:34pt}
+    section{padding:10mm 0 2mm;page-break-inside:auto}
+    #nulaget,#profilfixar,#innehallssystemet,#roadmap,#kallor{break-before:page}
+    #nastasteg ol.steps{page-break-inside:avoid;break-inside:avoid}
+    .lead,blockquote,.draftbox p,.gate p{color:var(--txt-body)}
+    .card,.draftbox,.pillar,.kpi,.gate,.tool,.cta,.truth,.phase .ph{page-break-inside:avoid;break-inside:avoid}
+    .tablewrap{overflow:visible;border-color:var(--line)}
+    table{min-width:0;font-size:9.5pt}
+    blockquote{page-break-inside:avoid}
+    .draftbox{background:#fbf9f4}
+    .draftbox::before{background:var(--gold);color:#fff}
+    .phase .ph .fn{color:#fff}
+    .pillar .pl .bok{color:#fff}
+    .logo{color:#fff}
+    a{color:inherit;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="brandrow">
+      <div class="logo">RM</div>
+      <div class="bn">Raheb Muftee<small>LinkedIn-genomgång · Konfidentiellt arbetsmaterial</small></div>
+    </div>
+    <div class="eyebrow">Analys &middot; Utkast &middot; System &middot; Roadmap</div>
+    <h1>LinkedIn-genomgång<br><span class="amp">&amp;</span> tillväxtplan</h1>
+    <p class="subject"><b>Raheb Muftee</b> · Idrottspsykologi</p>
+    <div class="metaline">
+      <span>Datum <b>2026-07-04</b></span>
+      <span>Framtagen av <b>Ikapp</b></span>
+      <span>Underlag <b>16 inlägg · profildata · algoritmdata 2026</b></span>
+    </div>
+  </header>
+  <div class="goldline"></div>
+
+  <!-- ============ 01 SAMMANFATTNING ============ -->
+  <section id="sammanfattning">
+    <div class="shead"><span class="snum">01</span><h2>Sammanfattning</h2></div>
+    <div class="srule"></div>
+    <p class="lead">Ditt innehåll fungerar redan, det är förpackningen som läcker.</p>
+    <p>Vi har gått igenom dina 16 senaste LinkedIn-inlägg, din profil och 2026 års algoritmdata. Analysen visar två saker samtidigt: dina datainlägg och din ge-bort-mekanik hör till det som bevisligen fungerar på din publik<sup class="ref"><a href="#kallor">[1]</a></sup>, men profilen saknar hela konverteringsytan: ingen Om-sektion, ingen Utvald-sektion, ingen banner, och en headline som använder 38 av 220 tillåtna tecken<sup class="ref"><a href="#kallor">[1]</a></sup>. Det betyder att den uppmärksamhet dina inlägg skapar idag rinner av en tom profil. Dokumentet innehåller tre delar: färdiga profilutkast att klistra in, ett innehållssystem byggt på dina egna bäst presterande format, och en tillväxt-roadmap i tre faser mot ett eget digitalt verktyg för lag, med en hård grind: ingen kod skrivs innan betalande lag finns. Varje siffra i dokumentet spårar till en angiven källa; där underlaget är leverantörsdata skriver vi det.</p>
+  </section>
+
+  <!-- ============ 02 NULÄGET ============ -->
+  <section id="nulaget">
+    <div class="shead"><span class="snum">02</span><h2>Nuläget</h2></div>
+    <div class="srule"></div>
+
+    <p>Din profil är i praktiken namn + headline + flöde. Ingen Om-sektion, ingen Utvald-sektion, ingen personlig banner, headline på 38 av 220 tecken<sup class="ref"><a href="#kallor">[1]</a></sup>. Det spelar större roll 2026 än tidigare, för klimatet på plattformen har hårdnat:</p>
+
+    <div class="kpiband">
+      <div class="kpi"><div class="n">&minus;50&nbsp;%</div><div class="l">Visningar mot året innan<sup class="ref"><a href="#kallor">[2][3]</a></sup></div></div>
+      <div class="kpi"><div class="n">&minus;25&nbsp;%</div><div class="l">Engagemang<sup class="ref"><a href="#kallor">[2][3]</a></sup></div></div>
+      <div class="kpi"><div class="n">&minus;59&nbsp;%</div><div class="l">Följartillväxt<sup class="ref"><a href="#kallor">[2][3]</a></sup></div></div>
+      <div class="kpi"><div class="n">2–5&nbsp;%</div><div class="l">Av nätverket som ett nytt inlägg först testas mot<sup class="ref"><a href="#kallor">[2][3]</a></sup></div></div>
+    </div>
+
+    <p>Siffrorna kommer från Richard van der Bloms Algorithm Insights Report 2026, byggd på 1,3 miljoner analyserade inlägg<sup class="ref"><a href="#kallor">[2]</a></sup>. Slutsatsen för dig: varje profilbesök måste räknas. Samtidigt gynnar 2026-algoritmen ämnesauktoritet framför följarantal, ett fokuserat konto kan slå ett tio gånger större spretigt<sup class="ref"><a href="#kallor">[4]</a></sup>. Dina 1 708 följare<sup class="ref"><a href="#kallor">[1]</a></sup> är alltså inget hinder. Din nisch, svensk idrottspsykologi, är precis den typ av smalt och konsekvent ämne som mekaniken gynnar.</p>
+
+    <h3>Vad profilen saknar, rankat efter förväntad effekt</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Saknas idag (verifierat)</th><th>Vad 2026-checklistan säger</th></tr></thead>
+        <tbody>
+          <tr><td><b>1</b></td><td><b>Headline:</b> &rdquo;University Lecturer | Sport Psychology&rdquo;, 38 av 220 tecken, enbart titel<sup class="ref"><a href="#kallor">[1]</a></sup></td><td>Använd alla 220 tecken: vem du hjälper, resultatet, trovärdighetssignal<sup class="ref"><a href="#kallor">[5][6]</a></sup>. Headline syns i varje inlägg och varje kommentar du skriver, det är den yta flest ser</td></tr>
+          <tr><td><b>2</b></td><td><b>Ingen Utvald/Featured-sektion</b><sup class="ref"><a href="#kallor">[1]</a></sup></td><td>Featured ska bära lead magnet, bästa bevis och tydlig CTA. Extra tydligt i ditt fall: du har en bevisad lead magnet (manualen, 47 kommentarer<sup class="ref"><a href="#kallor">[1]</a></sup>), men den ligger begravd i ett två månader gammalt inlägg<sup class="ref"><a href="#kallor">[5][6]</a></sup></td></tr>
+          <tr><td><b>3</b></td><td><b>Ingen Om-sektion</b><sup class="ref"><a href="#kallor">[1]</a></sup></td><td>Om-sektionen skriven som säljsida: problem &rarr; metod &rarr; bevis &rarr; CTA. Det är sidan en sportchef läser innan hen skickar ett meddelande<sup class="ref"><a href="#kallor">[5][6]</a></sup></td></tr>
+          <tr><td><b>4</b></td><td><b>Ingen personlig banner</b><sup class="ref"><a href="#kallor">[1]</a></sup></td><td>Foto + banner som kommunicerar positioneringen på två sekunder<sup class="ref"><a href="#kallor">[5][6]</a></sup></td></tr>
+          <tr><td><b>5</b></td><td><b>Rekommendationer</b>, status ej verifierad i underlaget, så vi påstår inget om läget</td><td>Checklistan vill se rekommendationer från tränare och atleter, värd att se över<sup class="ref"><a href="#kallor">[5][6]</a></sup></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Rankingen bygger på exponeringslogik: headline ses vid varje inlägg och kommentar, Featured och Om ses först vid profilbesök, bannern är stödsignal. En ärlig brasklapp: exakta konverteringseffekter per punkt finns inte i seriös data. Men när alla fyra översta ytorna är tomma samtidigt möter varje profilbesökare en tom konverteringsyta, hur bra flödet än är.</p>
+
+    <h3>Vad ditt innehåll redan bevisar</h3>
+    <p>Det här är den viktiga halvan av genomgången: du behöver ingen ny innehållsstrategi. Din egen historik pekar redan ut den.</p>
+
+    <p><b>Data-inlägg är ditt starkaste format.</b> Ditt mest gillade inlägg i underlaget är psyk-indexet, 62 reaktioner<sup class="ref"><a href="#kallor">[1]</a></sup>:</p>
+    <blockquote>&rdquo;Vad händer om vi tar bort resultaten och bara tittar på psykologin i matcherna? Jag testade den tanken på Allsvenskan. Utifrån matchdata från 2025 analyserade jag 20 matchsituationer där mentala faktorer ofta avgör matcher.&rdquo;
+      <span class="who"><b>62 reaktioner</b>, ditt mest gillade inlägg (psyk-index Allsvenskan vs Eliteserien)<sup class="ref"><a href="#kallor">[1]</a></sup></span>
+    </blockquote>
+    <p>Tvåa i samma genre: manifestet &rdquo;idrottspsykologi ÄR ett analysverktyg&rdquo; (43 reaktioner)<sup class="ref"><a href="#kallor">[1]</a></sup>. Psyk-profilerna Sirius/Hammarby/GAIS ligger i samma spår. Mönstret i din historik: data-inlägg vinner, vanliga textinlägg landar på 10–20 reaktioner<sup class="ref"><a href="#kallor">[1]</a></sup>.</p>
+
+    <p><b>Ge-bort-mekaniken är din bästa någonsin.</b> Utvecklingsmodellen 10–18 år fick 34 reaktioner men 47 kommentarer, ditt i särklass högsta kommentarantal<sup class="ref"><a href="#kallor">[1]</a></sup>, på en enda rad:</p>
+    <blockquote>&rdquo;Vill du ha manualen? Kommentera eller skicka ett meddelande, enda kravet är att jag också vill ha din input på innehållet! ⭐&rdquo;
+      <span class="who"><b>34 reaktioner · 47 kommentarer</b>, utvecklingsmodellen 10–18 år<sup class="ref"><a href="#kallor">[1]</a></sup></span>
+    </blockquote>
+    <p>Det är exakt den mekanik 2026-underlaget lyfter fram: kommentarsgrindade lead magnets uppges ge flerfaldigt högre räckvidd än länkinlägg<sup class="ref"><a href="#kallor">[7]</a></sup>, leverantörsdata, ska tolkas försiktigt. Men leverantörssiffran kan du hålla på armlängds avstånd: du uppfann mekaniken själv, och den fungerade på din publik. Dwell time väger dessutom tyngre än gilla-markeringar i 2026-algoritmen<sup class="ref"><a href="#kallor">[2][3]</a></sup>, och en kommentar är en identifierad kontakt, inte bara en signal.</p>
+
+    <p><b>Du har corporate-bevis i kundens egna ord.</b> Maxitech-reposten (30 reaktioner<sup class="ref"><a href="#kallor">[1]</a></sup>) beskriver dig med deras formuleringar:</p>
+    <blockquote>&rdquo;...konkreta verktyg för kommunikation, feedback, självreflektion och prestation under press.&rdquo;
+      <span class="who"><b>30 reaktioner</b>, Maxitechs repost, deras ord<sup class="ref"><a href="#kallor">[1]</a></sup></span>
+    </blockquote>
+    <p><b>Och du har redan ett signaturramverk.</b> Observera &rarr; Förstå &rarr; Förändra bar Hammarby-inlägget till 28 reaktioner och 11 kommentarer<sup class="ref"><a href="#kallor">[1]</a></sup>. Repeterbara ramverk bygger ämnesauktoritet, och ämnesauktoritet är 2026 års viktigaste valuta<sup class="ref"><a href="#kallor">[4]</a></sup>.</p>
+
+    <div class="card">
+      <h4>Formatnot</h4>
+      <p style="margin-bottom:0">Dokument/PDF-karuseller är 2026 års starkaste format med 6,6&nbsp;% genomsnittligt engagemang, mot 2,0&nbsp;% för ren text<sup class="ref"><a href="#kallor">[2][3]</a></sup>. Din utvecklingsmodell och ditt index är karusellmaterial som redan finns, men i textform, det svagaste av huvudformaten.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 PROFILFIXAR ============ -->
+  <section id="profilfixar">
+    <div class="shead"><span class="snum">03</span><h2>Profilfixar med färdiga utkast</h2></div>
+    <div class="srule"></div>
+    <p>Allt nedan är skrivet i din röst, med dina egna formuleringar och ramverk som grund. Ingenting är påhittat, varje bevisrad spårar till ett verkligt inlägg i underlaget.</p>
+
+    <h3><span class="tag">Headline</span>, 212 tecken, ryms i 220-gränsen</h3>
+    <div class="draftbox">
+      <p><b>Idrottspsykologi som analysverktyg | Hjälper klubbar och tränare förstå varför prestationen förändras – och förändra den | Universitetsadjunkt i idrottspsykologi (LiU &amp; Lnu) | Psykologisk matchanalys &amp; utbildning</b></p>
+      <p class="note">Varför den är byggd så: &rdquo;Idrottspsykologi som analysverktyg&rdquo; är din egen tes, formulerad i dina inlägg (&rdquo;Idrottspsykologi är ett analysverktyg!&rdquo;). &rdquo;Förstå varför prestationen förändras&rdquo; är din formulering ur Hammarby-analysen. Strukturen vem-du-hjälper &rarr; resultat &rarr; trovärdighet följer 2026-checklistan<sup class="ref"><a href="#kallor">[5]</a></sup>. Universitetsrollerna behålls som trovärdighetssignal, men flyttas från förstaplats till bevisplats.</p>
+    </div>
+
+    <h3><span class="tag">Om-sektion</span>, problem &rarr; metod &rarr; bevis &rarr; CTA</h3>
+    <div class="draftbox">
+      <p>När den fotbollstaktiska analysen tar slut, tar ofta analysen slut. &rdquo;Vi förstår inte riktigt vad som hände&rdquo;, jag hör det från allt fler tränare. Videoanalysen och statistiken svarar på VAD som hände. Men om vi inte förstår VARFÖR prestationen förändras, kan vi heller inte förändra den.</p>
+      <p>Det är där jag arbetar. Min metod är enkel att beskriva och kräver systematik att genomföra:</p>
+      <p><b>Observera &rarr; Förstå &rarr; Förändra.</b><br>Fler bakåtpass än normalt, färre egna initiativ, längre beslutstid, det syns i videoklippen. Bakom beteendena finns riskmedvetenhet, tvekan, smalnande fokus. Och det går att jobba med: gemensam reflektion, tydliggjort beslutsbeteende i pressade lägen, mentala strategier för kritiska matchsituationer.</p>
+      <p>Konkret har det bland annat blivit:</p>
+      <p>• Ett psykologiskt index byggt på 20 matchsituationer i 5 kategorier, som jag använt för att analysera Allsvenskan och jämföra med Eliteserien.<br>
+      • En psykologisk utvecklingsmodell för idrottsklubbar (10–18 år): Upptäcka &rarr; Förstå &amp; reglera &rarr; Prestera under press.<br>
+      • Utbildningar för föreningar och företag, senast beskrev en företagskund innehållet som &rdquo;konkreta verktyg för kommunikation, feedback, självreflektion och prestation under press&rdquo;.</p>
+      <p>Till vardags är jag universitetsadjunkt i idrottspsykologi vid Linköpings universitet och Linnéuniversitetet. Det betyder att det jag tar med till din klubb eller ditt företag vilar på forskning, men översatt till enkla, användbara verktyg. Om vi inte lyckas göra teorierna användbara för tränaren, tappar vi bort kraften i budskapet.</p>
+      <p>Arbetar du i en klubb eller ett företag och känner igen dig i &rdquo;vi förstår inte riktigt vad som hände&rdquo;? Skicka ett meddelande, så tar vi det därifrån.</p>
+      <p class="note">Spårbarhet, rad för rad: öppningen och VAD/VARFÖR-tesen kommer ur dina inlägg om Hammarby och analysverktygs-manifestet. Observera&rarr;Förstå&rarr;Förändra med exakt de exemplen är din Hammarby-analys. Indexet (20 situationer, 5 kategorier) är dina egna inlägg. Utvecklingsmodellen med de tre stegen är din manual. Företagscitatet är Maxitechs egna ord. &rdquo;Enkla, användbara verktyg / kraften i budskapet&rdquo; är din formulering ur coaching-inlägget<sup class="ref"><a href="#kallor">[1]</a></sup>. Strukturen följer 2026-checklistan<sup class="ref"><a href="#kallor">[5][6]</a></sup>.</p>
+    </div>
+
+    <h3><span class="tag">Utvald/Featured</span>, tre platser, allt material finns redan</h3>
+    <ol class="steps">
+      <li><b>Manualen: psykologisk utvecklingsmodell 10–18 år.</b> Din bevisade lead magnet (47 kommentarer<sup class="ref"><a href="#kallor">[1]</a></sup>) som Featured-etta, med rubrik i stil med &rdquo;Utvecklingsmodellen 10–18 år, vill du ha manualen? Skicka ett meddelande.&rdquo; Då arbetar din bästa mekanik dygnet runt i stället för att ligga begravd i flödet. Featured-platsen för lead magnet + CTA är checklistans huvudrekommendation<sup class="ref"><a href="#kallor">[5]</a></sup>. Bonus: samma innehåll är råmaterial för en dokumentkarusell, 2026 års starkaste format<sup class="ref"><a href="#kallor">[3]</a></sup>.</li>
+      <li><b>Indexmätningen: psyk-index-inlägget Allsvenskan vs Eliteserien.</b> Ditt mest gillade inlägg (62 reaktioner<sup class="ref"><a href="#kallor">[1]</a></sup>) fastnålat som metodbevis, det visar på tio sekunder att du mäter, inte tycker. &rdquo;Bästa bevis&rdquo; är checklistans andra Featured-plats<sup class="ref"><a href="#kallor">[6]</a></sup>.</li>
+      <li><b>Manifestet: &rdquo;Idrottspsykologi ÄR ett analysverktyg&rdquo;</b> (43 reaktioner<sup class="ref"><a href="#kallor">[1]</a></sup>). Din positionering i ett enda inlägg, presspel, omställningsspel, kognitiv kontroll, ledarskap. Den som läser plats 1–3 i följd förstår exakt vad du gör, hur du mäter och varför det behövs. Alternativ trea, om du hellre visar företagsspåret: Maxitech-reposten, kundens ord i stället för dina.</li>
+    </ol>
+
+    <h3><span class="tag">Banner</span>, koncept</h3>
+    <div class="card">
+      <p>Mörk marinblå botten med en tunn guldlinje som löper horisontellt genom bilden, men linjen är inte dekor, den är en stiliserad indexkurva med toppar och dalar: en tyst blinkning till ditt psykologiska index. Vänsterställd huvudtext i vitt: <b>&rdquo;Idrottspsykologi är ett analysverktyg.&rdquo;</b>, din egen tes, ordagrant. Under den, i guld och mindre grad: &rdquo;Psykologisk matchanalys · Utbildning · Utveckling 10–18 år&rdquo;, dina tre verkliga ben. Högersidan hålls ren och luftig, eftersom profilbilden täcker nedre vänsterhörnet på mobil.</p>
+      <p style="margin-bottom:0">Ingen stockbild, inga bollar, inga hjärnsymboler. Marinblå och guld signalerar samma sak som ditt innehåll: seriositet, data, elitmiljö. Bannerns enda uppgift är checklistans: kommunicera positioneringen innan besökaren scrollat<sup class="ref"><a href="#kallor">[5]</a></sup>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 INNEHÅLLSSYSTEMET ============ -->
+  <section id="innehallssystemet">
+    <div class="shead"><span class="snum">04</span><h2>Innehållssystemet</h2></div>
+    <div class="srule"></div>
+    <p>Vi har inte hittat på innehållspelare åt dig. Vi har läst dina 16 senaste inlägg och grupperat dem efter tema och engagemang. Mönstret är tydligt: datainlägg och ge-bort-material vinner, resten av flödet kommer inte i närheten<sup class="ref"><a href="#kallor">[1]</a></sup>.</p>
+
+    <h3>Fyra pelare, de finns redan i ditt flöde</h3>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pl"><span class="bok">A</span><h4>Psykologisk matchdata (&rdquo;indexet&rdquo;)</h4></div>
+        <p>Dina egna analyser av matchdata genom psykologiskt filter. Vi har inte sett någon annan i Sverige publicera den här typen av data, det är ditt unika råmaterial.</p>
+        <div class="ev">Bevis: psyk-indexet Allsvenskan vs Eliteserien, <b>62 reaktioner</b>, din topp. Psyk-profilerna Sirius/Hammarby/GAIS i samma spår<sup class="ref"><a href="#kallor">[1]</a></sup>.</div>
+      </div>
+      <div class="pillar">
+        <div class="pl"><span class="bok">B</span><h4>Beteendemönster i aktuella matcher</h4></div>
+        <p>Observera &rarr; Förstå &rarr; Förändra applicerat på det alla redan pratar om samma vecka: Allsvenskan, landslagsfotboll.</p>
+        <div class="ev">Bevis: Hammarby-analysen <b>28 reaktioner + 11 kommentarer</b>; manifestet <b>43 reaktioner</b>; självmålsvideon med direkt fråga till tränare<sup class="ref"><a href="#kallor">[1]</a></sup>.</div>
+      </div>
+      <div class="pillar">
+        <div class="pl"><span class="bok">C</span><h4>Manual- och modell-giveaways</h4></div>
+        <p>Du bygger ett ramverk och ger bort det mot en kommentar, mekaniken som 2026-underlaget uppger ger flerfaldigt högre räckvidd än länkinlägg<sup class="ref"><a href="#kallor">[7]</a></sup> (leverantörsdata), och som du redan bevisat på ditt eget konto.</p>
+        <div class="ev">Bevis: utvecklingsmodellen 10–18 år, <b>34 reaktioner + 47 kommentarer</b>, flest kommentarer av alla dina inlägg. Femstegsmodellen för utvärdering ligger i samma familj<sup class="ref"><a href="#kallor">[1]</a></sup>.</div>
+      </div>
+      <div class="pillar">
+        <div class="pl"><span class="bok">D</span><h4>Ledarskap &amp; psykologisk trygghet</h4></div>
+        <p>Inte räckviddsmotor, utan positionering mot sportchefer, föreningsledare och företag. Behålls, men bär inte kalenderns tyngd.</p>
+        <div class="ev">Bevis: &rdquo;högt i tak&rdquo;, energitjuven, trygg idrott, inläggen som bygger förtroendet hos sportchefer, även när de inte driver räckvidd. Bryggan till företagsmarknaden: Maxitech-reposten, <b>30 reaktioner</b>, ditt starkaste corporate-bevis<sup class="ref"><a href="#kallor">[1]</a></sup>.</div>
+      </div>
+    </div>
+    <p><b>Slutsats:</b> A och C är dina räckviddsmotorer (dokumenterat i ditt eget flöde), B är din aktualitetsmotor, D är din affärsbrygga. Systemet nedan ger A och C bäst format och mest verktygsstöd.</p>
+
+    <h3>Formatmixen mot 2026-datat</h3>
+    <p>Genomsnittligt engagemang per format enligt van der Bloms rapport<sup class="ref"><a href="#kallor">[2][3]</a></sup>:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Format</th><th>Engagemang</th><th>Not</th></tr></thead>
+        <tbody>
+          <tr><td><b>Dokument/PDF-karuseller</b></td><td><b>6,6&nbsp;%</b></td><td>Bäst, hög dwell time</td></tr>
+          <tr><td>Native video 30–90 s</td><td>5,6&nbsp;%</td><td>Sekundärkällor är motstridiga om video; van der Bloms dataset väger tyngst<sup class="ref"><a href="#kallor">[3]</a></sup></td></tr>
+          <tr><td>Bild + text</td><td>3,2&nbsp;%</td><td></td></tr>
+          <tr><td>Ren text</td><td>2,0&nbsp;%</td><td>Formatet dina modeller publiceras i idag</td></tr>
+          <tr><td>Extern länk i inlägget</td><td>ca &minus;60&nbsp;% räckvidd</td><td>Länkregeln: lägg alltid länken i första kommentaren, eller skicka i DM</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Kadens: 2–4 inlägg per vecka, kvalitet slår volym<sup class="ref"><a href="#kallor">[3]</a></sup>. Det passar en person med heltidstjänst. Systemet kräver inte att du blir influencer på heltid.</p>
+
+    <h3>Exempelkalender, fyra veckor, 2–3 inlägg per vecka</h3>
+    <p>Ett exempel, byggt efter kadensrekommendationen<sup class="ref"><a href="#kallor">[3]</a></sup> och din verklighet. Ordningen justeras efter spelschemat i Allsvenskan. Verktygen tar produktionen, du tar rösten.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Vecka</th><th>Dag</th><th>Pelare</th><th>Format &amp; innehåll</th><th>Verktyg</th><th>CTA-mekanik</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><b>1</b></td><td>Tis</td><td>A</td><td>PDF-karusell: &rdquo;Så såg helgens omgång ut psykologiskt&rdquo;</td><td>Matchrapporten + karusellverktyget</td><td>Öppen fråga till tränare, greppet som gav 11 kommentarer på Hammarby-inlägget<sup class="ref"><a href="#kallor">[1]</a></sup></td></tr>
+          <tr><td>Fre</td><td>C</td><td>Text + bild: lansera indexmätaren</td><td>Indexmätaren</td><td>Kommentarsgrindad: &rdquo;Kommentera INDEX så skickar jag den&rdquo;, din beprövade manual-mekanik<sup class="ref"><a href="#kallor">[1][7]</a></sup></td></tr>
+          <tr><td rowspan="3"><b>2</b></td><td>Tis</td><td>B</td><td>Text: Observera&rarr;Förstå&rarr;Förändra på veckans mest omdiskuterade match</td><td>– <span class="dim">(ev. stödbild ur matchrapporten)</span></td><td>Direkt fråga till tränare, ditt grepp från självmålsinlägget<sup class="ref"><a href="#kallor">[1]</a></sup></td></tr>
+          <tr><td>Tor</td><td>C</td><td>PDF-karusell: femstegsmodellen för utvärdering i karusellform</td><td>Karusellverktyget</td><td>Kommentera för hela mallen; leverans i DM<sup class="ref"><a href="#kallor">[7]</a></sup></td></tr>
+          <tr><td>Lör</td><td>D</td><td>Kort text: observation i stil med &rdquo;högt i tak&rdquo;</td><td>–</td><td>Ingen, ren positionering mot sportchefer</td></tr>
+          <tr><td rowspan="2"><b>3</b></td><td>Tis</td><td>A</td><td>PDF-karusell: index-jämförelse, ditt 62-reaktionersformat i det starkaste formatet</td><td>Matchrapporten + karusellverktyget</td><td>Länk till indexmätaren i första kommentaren<sup class="ref"><a href="#kallor">[3]</a></sup></td></tr>
+          <tr><td>Fre</td><td>B</td><td>Native video 30–90 s (5,6&nbsp;%-formatet<sup class="ref"><a href="#kallor">[3]</a></sup>): du framför kameran om en aktuell matchsituation</td><td>–</td><td>Fråga till tränare</td></tr>
+          <tr><td rowspan="3"><b>4</b></td><td>Tis</td><td>C</td><td>PDF-karusell: utvecklingsmodellen 10–18 år, ditt bästa innehåll, nu i bästa formatet</td><td>Karusellverktyget</td><td>Kommentarsgrindad manual, mekaniken som redan gett 47 kommentarer<sup class="ref"><a href="#kallor">[1]</a></sup></td></tr>
+          <tr><td>Tor</td><td>A+C</td><td>Text + bild: &rdquo;Vad säger mätaren om ditt lag?&rdquo;</td><td>Indexmätaren</td><td>Kommentarsgrindad</td></tr>
+          <tr><td>Lör</td><td>D</td><td>Text: tema ur Maxitech-spåret (kommunikation under press)</td><td>–</td><td>Ingen, bevisinlägg</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Tidsbudget, ärligt räknat</h4>
+      <p style="margin-bottom:0">Karusellverktyget och matchrapporten producerar råmaterialet; din insats per inlägg är att skriva och justera texten med din röst. Därtill rekommenderar 2026-underlaget strategiskt kommenterande hos målgruppens konton, leverantörsdata uppger att 10–15 kvalitetskommentarer per dag ger 3–5 inkommande DM per vecka<sup class="ref"><a href="#kallor">[8]</a></sup>. Leverantörssiffra, tolkas försiktigt. Även en nedskalad variant, 15 minuter på lunchen, följer samma mekanik.</p>
+    </div>
+
+    <h3>Varför svenskt och smalt slår engelskt och brett, just nu</h3>
+    <p>Du skriver idag flera inlägg på både svenska och engelska i samma post (&rdquo;english below&rdquo;-mönstret<sup class="ref"><a href="#kallor">[1]</a></sup>). Datat talar för att gå åt andra hållet:</p>
+    <ul class="plain">
+      <li><b>Ämnesauktoritet slår följarantal.</b> LinkedIns interest graph gör att ett konto med 8 000 fokuserade följare kan slå ett med 80 000 spretiga<sup class="ref"><a href="#kallor">[2][4]</a></sup>. Dina 1 708 följare<sup class="ref"><a href="#kallor">[1]</a></sup> är inget hinder, om ämnet är konsekvent smalt.</li>
+      <li><b>Svensk idrottspsykologi är en smal nisch</b>, och mekaniken gynnar just smala, konsekventa ämnen<sup class="ref"><a href="#kallor">[4]</a></sup>. På engelska konkurrerar du med hela världens sport psychologists. På svenska, om Allsvenskan, har vi inte hittat någon annan som gör det du gör, dina indexinlägg är, såvitt vi sett, ensamma i sitt slag.</li>
+      <li><b>Dina köpare är svenska.</b> Tränare, sportchefer och föreningar i Allsvenskan och svensk ungdomsfotboll, det är dem dina inlägg redan vänder sig till<sup class="ref"><a href="#kallor">[1]</a></sup>. Engelskt innehåll bygger i första hand en publik som sällan blir kunder, värdefull för det akademiska nätverket, men det är inte den som köper.</li>
+      <li><b>Dubbelspråket kostar utrymme och skärpa.</b> Svenska + engelska i samma inlägg halverar platsen för det som skapar dwell time, och dwell time väger tyngre än gilla-markeringar i 2026-algoritmen<sup class="ref"><a href="#kallor">[2]</a></sup>.</li>
+    </ul>
+    <p><b>Rekommendation:</b> svenska som huvudspråk i minst sex månader, riktat mot svenska tränare och sportchefer. Engelskan är inte förlorad, den dag internationella uppdrag är målet vänds samma system om. Men positionen &rdquo;Sveriges röst för psykologisk matchanalys&rdquo; är ledig nu, och den tas på svenska.</p>
+  </section>
+
+  <!-- ============ 05 VERKTYGEN ============ -->
+  <section id="verktygen">
+    <div class="shead"><span class="snum">05</span><h2>Verktygen i systemet</h2></div>
+    <div class="srule"></div>
+    <p>Tre verktyg bär systemet. Vart och ett är valt för att lösa en specifik flaskhals i din nuvarande produktion, inte för att verktyg är roliga.</p>
+    <div class="toolrow">
+      <div class="tool">
+        <div class="role">Datainläggs-motor · Pelare A</div>
+        <h4>Matchrapporten</h4>
+        <p>Ditt mest gillade inlägg (indexet, 62 reaktioner<sup class="ref"><a href="#kallor">[1]</a></sup>) och psyk-profilerna krävde manuellt analysarbete, därför kommer de sällan. Matchrapporten producerar underlaget åt dig, så att pelare A går från &rdquo;när jag hinner&rdquo; till varje vecka under säsong. Datat i inläggen är fortfarande ditt; verktyget tar bort produktionströskeln.</p>
+        <p class="spec"><b>Konkret:</b> 20 matchsituationer &rarr; fem nyckelbeteenden &rarr; psyk-index och färdigt rapportunderlag. Byggd för Allsvenskan 2026, på svenska och engelska.</p>
+      </div>
+      <div class="tool">
+        <div class="role">Bästa formatet · Pelare A + C</div>
+        <h4>Karusellverktyget</h4>
+        <p>Idag publicerar du dina modeller som ren text, 2,0&nbsp;%-formatet. Utvecklingsmodellen och femstegsmodellen är redan färdiga karusellmanus: de är byggda i steg. Karusellverktyget gör om exakt den typen av innehåll till dokumentformatet som enligt 2026-datat engagerar mer än tre gånger så mycket som ren text<sup class="ref"><a href="#kallor">[3]</a></sup>. Vi lovar inte att din siffra blir 6,6&nbsp;%, men vi flyttar ditt bästa innehåll från det svagaste av huvudformaten till det starkaste.</p>
+        <p class="spec"><b>Konkret:</b> text in &rarr; färdiga slides i din grafik, 1080&times;1350, exporteras som PDF (LinkedIns dokumentformat) eller PNG:er.</p>
+      </div>
+      <div class="tool">
+        <div class="role">Lead-fångst · Pelare C</div>
+        <h4>Indexmätaren</h4>
+        <p>En giveaway som inte tar slut: manualen kunde du ge bort en gång, mätaren kan varje ny tränare vilja testa. Mekaniken &rdquo;kommentera ett ord, få resursen i DM&rdquo; uppges ge flerfaldigt högre räckvidd än länkinlägg<sup class="ref"><a href="#kallor">[7]</a></sup>, men du behöver inte tro på leverantörssiffran: ditt eget manual-inlägg med samma mekanik gav 47 kommentarer, mer än något annat du publicerat<sup class="ref"><a href="#kallor">[1]</a></sup>. Och varje kommentar är en identifierad kontakt, namn, roll och klubb ett klick bort, inte en anonym visning.</p>
+        <p class="spec"><b>Konkret:</b> 15 frågor i tränar-, spelar- eller ledarläge &rarr; radar, index och fem åtgärder enligt Observera &rarr; Förstå &rarr; Förändra, plus en delbar resultatbild.</p>
+      </div>
+    </div>
+    <p>Tillsammans stänger de kedjan: matchrapporten ger dig veckodata (räckvidd), karusellverktyget paketerar den i det starkaste formatet (engagemang), indexmätaren omvandlar uppmärksamheten till identifierade kontakter (leads). Men kedjan producerar bara varje vecka om någon driver den, kör verktygen, läser av vad som presterar och förbereder nästa veckas underlag. Din roll i kedjan är den enda som inte går att automatisera, rösten och analysen.</p>
+  </section>
+
+  <!-- ============ 06 ROADMAP ============ -->
+  <section id="roadmap">
+    <div class="shead"><span class="snum">06</span><h2>Tillväxt-roadmap: Fas 0 &rarr; 1 &rarr; 2</h2></div>
+    <div class="srule"></div>
+    <p class="lead">Från dagens läge till ett eget digitalt verktyg för lag, utan att du köper ett appbygge du inte behöver ännu.</p>
+    <p>Utgångspunkten som bär hela roadmapen: <b>värdet är din metod och din person, inte en app.</b> Du har redan formulerat kravspecen själv, i coaching-inlägget:</p>
+    <blockquote>&rdquo;Använd formulär för fysisk och psykisk status, men följ upp svaren. Utan dialog och handling försvinner trovärdigheten i verktyget direkt.&rdquo;
+      <span class="who"><b>Ditt eget inlägg</b>, i praktiken kravspecen för ditt framtida verktyg<sup class="ref"><a href="#kallor">[1]</a></sup></span>
+    </blockquote>
+    <p>Därför är roadmapen byggd med grindar: varje fas måste bevisa sig innan nästa startar.</p>
+
+    <div class="phase">
+      <div class="ph"><span class="fn">Fas 0</span><h3>Nu &rarr; betald pilot, inga byggkostnader</h3></div>
+      <div class="pb">
+        <p><b>1. Personligt varumärke enligt genomgången i avsnitt 02–05.</b> Profilen byggs ut till en konverteringsyta (headline, Featured, Om, banner, rekommendationer) och innehållet lutas mot det som bevisligen fungerar för dig, kommentarsgrindat material, mekaniken som redan gav dig 47 kommentarer<sup class="ref"><a href="#kallor">[1]</a></sup>, paketerat i 2026 års starkaste format, PDF-karuseller<sup class="ref"><a href="#kallor">[2][3]</a></sup>.</p>
+        <p><b>2. Manuell pilot utan en enda rad kod.</b> Affärsmodellen testas med befintliga verktyg: antingen Quenza ($27/mån Starter, $47/mån Plus), byggt för just psykologer som skickar övningar till klienter och följer progress, med 200+ färdiga övningar<sup class="ref"><a href="#kallor">[16]</a></sup>, eller ännu enklare med formulär. Du kör veckocheck-ins och övningsutskick med 1–2 lag manuellt och ser om tränare och spelare faktiskt använder det. <i>Reservation: Quenzas GDPR-status för svensk användning är overifierad och måste kontrolleras innan skarp användning.</i></p>
+        <p><b>Ikapps roll i Fas 0:</b> genomföra profilombyggnaden, sätta upp karusell- och innehållsmaskineriet, och rigga den manuella piloten, verktygsval, formulär, uppföljningsstruktur. Och löpande under säsong: hålla matchrapporten och karusellmaskineriet igång, justera format efter vad som presterar och leverera veckounderlaget.</p>
+        <div class="gate"><span class="gi">Grind &rarr; Fas 1</span><p><b>2–3 lag har skriftligt förbundit sig till en betald pilot.</b> Inte &rdquo;visat intresse&rdquo;, inte &rdquo;låter spännande&rdquo;, skriftligt och betalt. Innan dess byggs ingenting.</p></div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph"><span class="fn">Fas 1</span><h3>MVP-webbapp, först när betalande lag finns</h3></div>
+      <div class="pb">
+        <p><b>Innehållet i minsta säljbara version</b> (ingen App Store-app första året):</p>
+        <ul class="plain">
+          <li><b>Övningsbibliotek</b> med ditt eget material i text och ljud, till exempel utvecklingsmodellen 10–18 år och manualen som redan bevisat sin dragkraft<sup class="ref"><a href="#kallor">[1]</a></sup></li>
+          <li><b>Veckovis check-in</b> för atleter, 3–5 frågor</li>
+          <li><b>Coach-dashboard</b> med trafikljus och trend per atlet, samma logik som ditt eget Observera &rarr; Förstå &rarr; Förändra<sup class="ref"><a href="#kallor">[1]</a></sup></li>
+          <li>Inloggning via mejllänk, lagkoder för onboarding</li>
+        </ul>
+        <p><b>Vad den kostar att driva</b> (marknadssiffror, inte Ikapp-priser): en standardstack för små webbappar, där gratisnivåerna räcker under piloten<sup class="ref"><a href="#kallor">[17]</a></sup>. Vid skarp drift anger tredjepartsgenomgångar en total driftkostnad i storleksordningen några hundralappar i månaden, inte tiotusentals<sup class="ref"><a href="#kallor">[17][18]</a></sup>. Exakta nivåer och stackdetaljer finns i källorna i avsnitt 08.</p>
+        <p><b>Vilken roll verktyget spelar, och inte spelar:</b> dess rätta funktion är att göra dina lagavtal svårare att säga upp och motivera en högre retainer, inte att ersätta konsultintäkten. Med marknadspris runt $4.50–8 per atlet och månad<sup class="ref"><a href="#kallor">[9][10]</a></sup> förblir ren SaaS-intäkt småpengar länge. Appen är kittet mellan dina livesessioner. Det är du som är produkten.</p>
+        <p><b>Ikapps roll i Fas 1:</b> bygga och driftsätta MVP:n, sätta upp datastrukturen GDPR-riktigt (biträdesavtal, dataminimering, tydligt ansvar hos klubben, se rådgivningen nedan) och onboarda pilotlagen, plus löpande drift, GDPR-underhåll och vidareutveckling efter verklig användning.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph"><span class="fn">Fas 2</span><h3>Skala, när piloten bevisat sig</h3></div>
+      <div class="pb">
+        <ul class="plain">
+          <li><b>Notiser och påminnelser</b>, direkt attack på retentionsproblemet (se punkt 1 i rådgivningen nedan)</li>
+          <li><b>Fler lag</b>, onboarding via lagkoder skalar utan manuellt arbete</li>
+          <li><b>Eventuellt native app</b>, först här, om användningen motiverar det</li>
+        </ul>
+        <p>Fas 2 definieras medvetet löst: vad som byggs styrs av vad pilotlagen faktiskt använder, inte av en funktionslista bestämd idag. Men målbilden den pekar mot är densamma som i avsnitt 04: du är Sveriges röst för psykologisk matchanalys, med lag som betalar året runt för din metod, ett verktyg som gör avtalen svåra att säga upp, och förfrågningar som kommer in via flödet i stället för via kall bearbetning.</p>
+      </div>
+    </div>
+
+    <h3>Marknaden: kategorin finns, priserna är låga</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Aktör</th><th>Vad</th><th>Pris</th></tr></thead>
+        <tbody>
+          <tr><td><b>Champion's Mind</b></td><td>12-modulers mentalt träningsprogram, 200+ övningar, coach-dashboard</td><td>Trainer $4.50/atlet/mån; Team $399/år för 5–20 platser, +$100 per 10 extra<sup class="ref"><a href="#kallor">[9]</a></sup></td></tr>
+          <tr><td><b>Restoic</b></td><td>KBT-baserad mental träning, Smart Coach-dashboard, läxor, teamchatt</td><td>Individ $7.99/mån eller $69.99/år; teampris via kontakt<sup class="ref"><a href="#kallor">[10]</a></sup></td></tr>
+          <tr><td><b>Rewire Fitness</b></td><td>Readiness-mätning + coach-plattform</td><td>Teampris ej publikt <span class="dim">(overifierat)</span><sup class="ref"><a href="#kallor">[11]</a></sup></td></tr>
+          <tr><td><b>OMP</b></td><td>Anpassningsbara mentala program + engagemangsdata</td><td>Ej publikt<sup class="ref"><a href="#kallor">[12]</a></sup></td></tr>
+          <tr><td><b>HeadSet Sports</b></td><td>Mental träning med team-dashboard</td><td>Ej publikt<sup class="ref"><a href="#kallor">[13]</a></sup></td></tr>
+          <tr><td><b>Teamworks AMS (Smartabase)</b></td><td>Konfigurerbara wellness-formulär, uppger 6 300+ lag</td><td>Pris efter kontakt<sup class="ref"><a href="#kallor">[14]</a></sup></td></tr>
+          <tr><td><b>TeamBuildr</b></td><td>Wellness questionnaires i alla nivåer</td><td>$90–280/mån<sup class="ref"><a href="#kallor">[15]</a></sup></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Läsningen av tabellen: check-in-funktionen i sig är bulkvara, den finns redan i system många lag betalar för. Differentieringen måste vara din metod och din person. Det är goda nyheter: det är exakt det du redan har, och det enda en konkurrent inte kan kopiera.</p>
+
+    <h3>Sex saker att veta innan någon skriver kod</h3>
+    <p>Det här är professionell rådgivning, inte varningar. En leverantör som ville sälja dig ett dyrt appbygge hade hoppat över den här sidan.</p>
+    <div class="card" style="padding-top:8px;padding-bottom:8px">
+      <div class="truth"><span class="tn">1</span><div>
+        <p>Retention är den verkliga fienden.</p>
+        <p>Hälso- och wellnessappar behåller typiskt 3–10&nbsp;% av användarna efter 30 dagar<sup class="ref"><a href="#kallor">[19]</a></sup>. En app utan din aktiva närvaro dör i tystnad, därför byggs den runt din närvaro, inte i stället för den.</p>
+      </div></div>
+      <div class="truth"><span class="tn">2</span><div>
+        <p>Innehållsvolym är ett förlorat race.</p>
+        <p>Champion's Mind har 130+ sessioner för $4.50 per atlet och månad<sup class="ref"><a href="#kallor">[9]</a></sup>. Du ska inte tävla i volym. Ditt värde är metoden och du själv.</p>
+      </div></div>
+      <div class="truth"><span class="tn">3</span><div>
+        <p>Många lag har redan check-ins i sitt AMS.</p>
+        <p>Teamworks, TeamBuildr med flera<sup class="ref"><a href="#kallor">[14][15]</a></sup>. Ett fristående verktyg måste motivera sin plats bredvid det laget redan betalar för, det gör det genom din metod och din uppföljning, inte genom formuläret i sig. Du har sagt det själv: &rdquo;utan dialog och handling försvinner trovärdigheten i verktyget direkt&rdquo;<sup class="ref"><a href="#kallor">[1]</a></sup>.</p>
+      </div></div>
+      <div class="truth"><span class="tn">4</span><div>
+        <p>SaaS-intäkten är småpengar länge.</p>
+        <p>Vid marknadspris $4.50–8 per atlet och månad<sup class="ref"><a href="#kallor">[9][10]</a></sup>. Verktygets jobb är att göra lagavtalen stickigare och retainern högre, inte att bli en intäktsström som ersätter dig.</p>
+      </div></div>
+      <div class="truth"><span class="tn">5</span><div>
+        <p>GDPR på allvar.</p>
+        <p>Måendedata om atleter är känsliga personuppgifter, i ungdomslag dessutom om minderåriga, vilket är din egen målgrupp i utvecklingsmodellen 10–18 år<sup class="ref"><a href="#kallor">[1]</a></sup>. Det kräver biträdesavtal, dataminimering och tydligt ansvar hos klubben. Quenzas GDPR-status för svensk användning är overifierad.</p>
+      </div></div>
+      <div class="truth"><span class="tn">6</span><div>
+        <p>Bygg ingenting innan 2–3 lag skriftligt förbundit sig till en betald pilot.</p>
+        <p>Det är grinden mellan Fas 0 och Fas 1, och den är inte förhandlingsbar.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ============ 07 NÄSTA STEG ============ -->
+  <section id="nastasteg">
+    <div class="shead"><span class="snum">07</span><h2>Nästa steg, de första 30 dagarna</h2></div>
+    <div class="srule"></div>
+    <ol class="steps">
+      <li><b>Vecka 1: profilen.</b> Headline, Om-sektion och Featured (de tre platserna i avsnitt 03) går live, utkasten i det här dokumentet är skrivna för att användas som de är, eller justeras tillsammans. Bannern produceras från konceptet i avsnitt 03 och går live samma vecka.</li>
+      <li><b>Vecka 1–2: första karusellen.</b> Utvecklingsmodellen 10–18 år, ditt bevisade innehåll, flyttas till dokumentformatet, 2026 års starkaste<sup class="ref"><a href="#kallor">[3]</a></sup>.</li>
+      <li><b>Vecka 2: indexmätaren lanseras</b> med kommentarsgrindad mekanik, samma grepp som gav dig 47 kommentarer<sup class="ref"><a href="#kallor">[1]</a></sup>, nu med en giveaway som inte tar slut.</li>
+      <li><b>Vecka 2–4: kalendern rullar.</b> 2–3 inlägg per vecka enligt fyraveckorsschemat i avsnitt 04, med matchrapporten som datamotor.</li>
+      <li><b>Parallellt: Fas 0-grinden.</b> En kort lista över klubbar och lag för pilotsamtal tas fram, så att vägen mot 2–3 skriftligt bekräftade pilotlag börjar direkt, inte efter att innehållet &rdquo;byggt klart&rdquo; publiken.</li>
+    </ol>
+    <div class="cta">
+      <h3>Vi går igenom planen tillsammans</h3>
+      <p>Alla utkast, systemet och roadmapen i det här dokumentet är byggda på ditt eget material och öppna källor. Vad som genomförs, i vilken ordning och i vilken takt, det bestämmer vi i ett gemensamt samtal.</p>
+    </div>
+  </section>
+
+  <!-- ============ 08 KÄLLOR ============ -->
+  <section id="kallor" class="sources">
+    <div class="shead"><span class="snum">08</span><h2>Källor</h2></div>
+    <div class="srule"></div>
+    <ol>
+      <li><b>Rahebs egna inlägg och profildata, LinkedIn juli 2026</b>, 16 inlägg verbatim + profilgenomgång, extraherad 2026-07-04. Samtliga reaktions- och kommentarssiffror samt citat i dokumentet kommer härifrån.</li>
+      <li><b>Richard van der Blom, Algorithm Insights Report 2026</b> (1,3 miljoner analyserade inlägg), richardvanderblom.com</li>
+      <li><b>Dataslayer: &rdquo;LinkedIn Algorithm February 2026, What's Working Now&rdquo;</b>, dataslayer.ai/blog/linkedin-algorithm-february-2026-whats-working-now</li>
+      <li><b>Melanie Goodman: &rdquo;LinkedIn Algorithm 2026, Reach &amp; Topic Authority&rdquo;</b>, melaniegoodmanlinkedinconsultant.substack.com</li>
+      <li><b>GrowLeads: &rdquo;LinkedIn Profile Optimization Guide 2026&rdquo;</b>, growleads.io/blog/linkedin-profile-optimization-guide-2026</li>
+      <li><b>CommentRocket: &rdquo;LinkedIn Profile Optimization Checklist 2026&rdquo;</b>, commentrocket.com/blog/linkedin-profile-optimization-checklist-2026</li>
+      <li><b>ConnectSafely: &rdquo;LinkedIn Lead Magnet Guide 2026&rdquo;</b>, connectsafely.ai <span class="hedge">(leverantörsdata, tolkas försiktigt)</span></li>
+      <li><b>Linkmate: &rdquo;LinkedIn Lead Generation 2026&rdquo;</b>, blog.linkmate.io <span class="hedge">(leverantörsdata, tolkas försiktigt)</span></li>
+      <li><b>Champion's Mind, prissida</b>, champsmind.com/pricing</li>
+      <li><b>Restoic</b>, restoic.com</li>
+      <li><b>Rewire Fitness, teams</b>, rewirefitness.app/teams <span class="hedge">(teampris overifierat)</span></li>
+      <li><b>Optimize Mind Performance</b>, optimizemindperformance.com</li>
+      <li><b>HeadSet Sports</b>, headsetsports.com</li>
+      <li><b>Teamworks AMS (Smartabase)</b>, teamworks.com/ams</li>
+      <li><b>TeamBuildr, prissida</b>, teambuildr.com/pricing</li>
+      <li><b>Quenza</b>, quenza.com; recensionsdata via capterra.com <span class="hedge">(GDPR-status för svensk användning overifierad)</span></li>
+      <li><b>Supabase, prissida</b>, supabase.com/pricing</li>
+      <li><b>Makerkit, driftkostnadsgenomgång</b>, makerkit.dev</li>
+      <li><b>Retentionsdata hälso-/wellnessappar</b>, businessofapps.com; sendbird.com</li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <span>Raheb Muftee · LinkedIn-genomgång &amp; tillväxtplan</span>
+    <span>Framtagen av Ikapp · 2026-07-04</span>
+  </footer>
+
+</div>
+</body>
+</html>

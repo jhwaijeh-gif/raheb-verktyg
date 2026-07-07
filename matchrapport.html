@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psykologisk Matchrapport — RM Sport Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1622;--bg2:#0c2018;--panel:#0f1d2e;--panel2:#0b1623;
+    --line:#1c2c40;--line-soft:#15212f;--txt:#f1f6fb;--txt-dim:#93a6bb;--txt-faint:#5f7286;
+    --gold:#ecaa3c;--gold-d:#c8851f;--red:#c0392b;--green:#2e8b57;
+    --accent:#3f93da; /* lagfärg, dynamisk */
+    --radius:16px;--shadow:0 30px 80px -34px rgba(0,0,0,.85);
+    --disp:'Oswald','Arial Narrow','Impact',system-ui,sans-serif;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);color:var(--txt);-webkit-font-smoothing:antialiased;line-height:1.5;
+    background:radial-gradient(1100px 640px at 85% -12%,rgba(63,147,218,.10),transparent 60%),
+      radial-gradient(900px 600px at -5% 115%,rgba(46,139,87,.10),transparent 55%),
+      linear-gradient(160deg,var(--bg),var(--bg2));min-height:100vh}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;border-bottom:1px solid var(--line)}
+  .topbar .left{display:flex;align-items:center;gap:12px}
+  .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-d));display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:18px;color:#1a1206;letter-spacing:.5px}
+  .topbar .name{font-family:var(--disp);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-size:15px}
+  .topbar .name small{display:block;font-family:var(--font);font-weight:500;letter-spacing:1.5px;color:var(--txt-faint);font-size:9px;text-transform:uppercase}
+  .lang{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .lang button{background:transparent;border:none;color:var(--txt-dim);padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+  .lang button.on{background:var(--gold);color:#1a1206}
+
+  .layout{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:0;min-height:calc(100vh - 73px)}
+  @media(max-width:900px){.layout{grid-template-columns:1fr}}
+
+  /* INPUT */
+  .input{padding:24px 26px;border-right:1px solid var(--line);position:relative}
+  .input h2{font-family:var(--disp);font-size:24px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+  .input .lead{font-size:13px;color:var(--txt-dim);margin-bottom:20px}
+  .row{display:flex;gap:12px;margin-bottom:16px}
+  .ctl{flex:1}
+  .ctl label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--txt-faint);margin-bottom:6px}
+  select,input[type=text]{width:100%;background:#091320;border:1px solid var(--line);color:var(--txt);padding:11px 12px;border-radius:10px;font-size:14px;font-family:inherit;outline:none}
+  select:focus,input:focus{border-color:var(--accent)}
+  .stepper{display:flex;align-items:center;gap:0;background:#091320;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .stepper button{background:transparent;border:none;color:var(--txt-dim);width:38px;height:42px;font-size:18px;cursor:pointer;font-family:inherit}
+  .stepper button:hover{color:var(--gold)}
+  .stepper span{flex:1;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+  .swatches{display:flex;gap:8px;align-items:center}
+  .sw{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.15s}
+  .sw.sel{border-color:#fff;transform:scale(1.12)}
+
+  .qcard{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:12px;padding:14px 15px;margin-bottom:12px}
+  .qcard h3{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .qcard h3 .nr{width:20px;height:20px;border-radius:5px;background:var(--gold);color:#1a1206;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex:none}
+  .q{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line-soft)}
+  .q:first-of-type{border-top:none}
+  .q .qt{font-size:12.5px;color:var(--txt-dim);flex:1}
+  .seg{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;flex:none}
+  .seg button{background:transparent;border:none;color:var(--txt-faint);padding:5px 9px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;border-left:1px solid var(--line)}
+  .seg button:first-child{border-left:none}
+  .seg button.on{color:#fff}
+  .seg button.ja.on{background:var(--green)}
+  .seg button.delvis.on{background:var(--gold);color:#1a1206}
+  .seg button.nej.on{background:var(--red)}
+
+  .sticky{position:sticky;bottom:0;background:linear-gradient(180deg,transparent,var(--bg) 30%);padding-top:14px;margin-top:6px}
+  .meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--txt-faint);margin-bottom:10px}
+  .meta b{color:var(--gold)}
+  .btns{display:flex;gap:9px}
+  button.primary{flex:1;padding:14px;border:none;border-radius:11px;font-weight:800;font-size:14px;cursor:pointer;font-family:var(--disp);letter-spacing:1px;text-transform:uppercase;color:#1a1206;background:linear-gradient(135deg,var(--gold),var(--gold-d));box-shadow:0 12px 30px -12px rgba(236,170,60,.6)}
+  button.primary:hover{transform:translateY(-1px)}
+  button.ghost{padding:14px 14px;background:transparent;border:1px solid var(--line);color:var(--txt-dim);border-radius:11px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
+  button.ghost:hover{border-color:var(--gold);color:var(--txt)}
+
+  /* REPORT */
+  .report-wrap{padding:24px 26px;display:flex;flex-direction:column}
+  .report{background:radial-gradient(700px 380px at 88% -20%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 60%),linear-gradient(180deg,#0c1726,#070d16);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden;flex:1}
+  .report::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.016) 0 1px,transparent 1px 70px);pointer-events:none}
+  .rhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;position:relative}
+  .reye{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:5px}
+  .rteam{font-family:var(--disp);font-size:46px;line-height:.9;text-transform:uppercase;letter-spacing:.5px}
+  .rsub{font-size:11px;color:var(--txt-faint);text-transform:uppercase;letter-spacing:1.5px;margin-top:8px}
+  .ibadge{text-align:center;flex:none}
+  .ibadge .num{font-family:var(--disp);font-size:60px;line-height:.8;font-variant-numeric:tabular-nums}
+  .ibadge .cap{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--txt-faint);margin-top:4px}
+  .ibadge .lab{font-size:11px;font-weight:800;letter-spacing:.5px;margin-top:7px;padding:4px 10px;border-radius:999px;border:1px solid;display:inline-block}
+
+  .rmid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;margin:14px 0 6px;position:relative}
+  @media(max-width:560px){.rmid{grid-template-columns:1fr}}
+  .radar-box{display:flex;justify-content:center}
+  svg.radar{width:100%;max-width:290px;height:auto;overflow:visible}
+  .bars{display:flex;flex-direction:column;gap:10px}
+  .bar{font-size:12.5px}
+  .bar .bt{display:flex;justify-content:space-between;margin-bottom:4px}
+  .bar .bt .bn{color:var(--txt-dim)}
+  .bar .bt .bv{font-weight:800;font-variant-numeric:tabular-nums}
+  .bar .track{height:6px;background:#16222f;border-radius:99px;overflow:hidden}
+  .bar .track i{display:block;height:100%;border-radius:99px;background:var(--accent);width:0;transition:width .7s cubic-bezier(.2,.7,.2,1)}
+
+  .analysis{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:16px;position:relative}
+  .ablock{margin-bottom:12px}
+  .ablock h4{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--txt-dim);margin-bottom:5px}
+  .ablock p{font-size:14px;color:#d2dde8}
+  .ablock p .hl{color:var(--accent);font-weight:600}
+
+  .rfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line-soft);font-size:10px;color:var(--txt-faint);letter-spacing:1px;text-transform:uppercase;position:relative}
+
+  .exportrow{display:flex;gap:9px;margin-top:14px}
+  .exportrow button{flex:1;padding:11px;background:transparent;border:1px solid var(--line);color:var(--txt-dim);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+  .exportrow button:hover{border-color:var(--gold);color:var(--txt)}
+  .disclaimer{font-size:11px;color:var(--txt-faint);text-align:center;margin-top:12px;line-height:1.6}
+
+  .analyzing{display:flex;align-items:center;justify-content:center;gap:12px;height:100%;color:var(--txt-dim);font-size:15px}
+  .spin{width:14px;height:14px;border-radius:50%;background:var(--gold);animation:pulse 1s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+  .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--txt-faint);height:100%;padding:40px}
+  .empty svg{opacity:.3;margin-bottom:16px}
+  .fade{animation:fade .5s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  @media print{
+    body{background:#fff}
+    .topbar,.input,.exportrow,.disclaimer{display:none!important}
+    .layout{grid-template-columns:1fr}
+    .report-wrap{padding:0}
+    .report{box-shadow:none;border:none}
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="left">
+      <div class="logo">RM</div>
+      <div class="name">RM Sport Consulting<small id="tagline">Psykologisk matchrapport</small></div>
+    </div>
+    <div class="lang" id="lang">
+      <button data-l="sv" class="on">SV</button>
+      <button data-l="en">EN</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- INPUT -->
+    <div class="input">
+      <h2 id="inTitle">Mata in matchsituationer</h2>
+      <p class="lead" id="inLead">20 mentala situationer → fem nyckelbeteenden → psyk-index och rapport.</p>
+
+      <div class="row">
+        <div class="ctl">
+          <label id="lblTeam">Välj lag</label>
+          <select id="team"></select>
+        </div>
+        <div class="ctl" style="flex:0 0 130px">
+          <label id="lblMatches">Antal matcher</label>
+          <div class="stepper"><button id="mminus">−</button><span id="mcount">8</span><button id="mplus">+</button></div>
+        </div>
+      </div>
+      <div class="ctl" style="margin-bottom:18px">
+        <label id="lblColor">Lagfärg</label>
+        <div class="swatches" id="swatches"></div>
+      </div>
+
+      <div id="qcards"></div>
+
+      <div class="sticky">
+        <div class="meta"><span><span id="lblFilled">Ifyllt</span>: <b id="filled">0</b>/20</span><span><span id="lblLive">Live psyk-index</span>: <b id="livei">–</b></span></div>
+        <div class="btns">
+          <button class="primary" id="gen">Generera rapport</button>
+          <button class="ghost" id="example">Fyll i exempel</button>
+          <button class="ghost" id="clear">Rensa</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPORT -->
+    <div class="report-wrap"><div id="out"></div></div>
+  </div>
+
+<script>
+/* ============================================================
+   Psykologisk Matchrapport — RM Sport Consulting
+   Uppgraderad 2026-07-04: fullt tvåspråkig (SV/EN) + variant-motor
+   som bryter den upprepade analystexten. Regelmotorn är kvar som
+   grund; den AI-röst-tränade varianten är nästa steg (kräver Rahebs
+   riktiga inlägg). Se WORKFLOW-raheb-verktyg.md.
+   ============================================================ */
+
+const AXES=[
+  {key:'beredskap', w:0.18, label:{sv:'Mental beredskap',    en:'Mental readiness'},
+     head:{sv:'Mental beredskap — första målet', en:'Mental readiness — the first goal'}},
+  {key:'momentum',  w:0.18, label:{sv:'Momentum',            en:'Momentum'},
+     head:{sv:'Momentum — direkt efter mål', en:'Momentum — right after scoring'}},
+  {key:'resiliens', w:0.24, label:{sv:'Resiliens',           en:'Resilience'},
+     head:{sv:'Resiliens — vända motgång', en:'Resilience — turning setbacks'}},
+  {key:'stabilitet',w:0.22, label:{sv:'Stabilitet över tid', en:'Stability over time'},
+     head:{sv:'Stabilitet — hålla 90 minuter', en:'Stability — sustaining 90 minutes'}},
+  {key:'stress',    w:0.18, label:{sv:'Stresshantering',      en:'Stress management'},
+     head:{sv:'Stresshantering — stänga matcher', en:'Stress management — closing games'}},
+];
+
+const Q={
+  beredskap:[
+    {sv:'Gjorde första målet i matchen', en:'Scored the first goal of the match'},
+    {sv:'Släppte in första målet', en:'Conceded the first goal', inv:true},
+    {sv:'Stark inledning – tog kommandot första 15 min', en:'Strong start — took command in the first 15 minutes'},
+    {sv:'Vann de tidiga närkamparna och duellerna', en:'Won the early duels and battles'},
+  ],
+  momentum:[
+    {sv:'Höjde nivån direkt efter eget mål', en:'Raised its level right after scoring'},
+    {sv:'Följde ofta upp med ett snabbt andra mål', en:'Often followed up with a quick second goal'},
+    {sv:'Tappade inte fokus precis efter eget mål', en:'Kept focus right after scoring'},
+    {sv:'Utnyttjade motståndarens svackor', en:'Capitalised on the opponent’s dips'},
+  ],
+  resiliens:[
+    {sv:'Vände underläge till oavgjort eller vinst', en:'Turned a deficit into a draw or win'},
+    {sv:'Skapade farligt läge inom 10 min efter insläppt mål', en:'Created a real chance within 10 minutes of conceding'},
+    {sv:'Höll strukturen efter en motgång', en:'Held its structure after a setback'},
+    {sv:'Behöll energi och kroppsspråk efter baklängesmål', en:'Kept its energy and body language after conceding'},
+  ],
+  stabilitet:[
+    {sv:'Höll nivån genom hela matchen (även minut 80+)', en:'Held its level for the full match (even past the 80th minute)'},
+    {sv:'Behöll ledningar utan att tappa dem', en:'Protected leads without giving them up'},
+    {sv:'Få individuella misstag i slutskedet', en:'Few individual mistakes late in games'},
+    {sv:'Jämn intensitet i andra halvlek', en:'Even intensity in the second half'},
+  ],
+  stress:[
+    {sv:'Stängde matcher när laget ledde', en:'Closed out games when leading'},
+    {sv:'Hanterade slutminuter och tilläggstid med ledning', en:'Managed the closing minutes and stoppage time while ahead'},
+    {sv:'Höll lugnet vid press mot slutet', en:'Stayed composed under late pressure'},
+    {sv:'Disciplin under press – undvek onödiga kort/straffar sent', en:'Stayed disciplined under pressure — avoided needless cards and penalties late'},
+  ],
+};
+
+/* Alla 16 lag i Allsvenskan 2026. Färgerna är ungefärliga klubbfärger
+   (ingen auktoritativ källa finns) — verifiera vid skarp leverans. */
+const TEAMS=[
+  {n:'AIK',c:'#111111'},{n:'BK Häcken',c:'#f4c20d'},{n:'Degerfors IF',c:'#c0392b'},
+  {n:'Djurgårdens IF',c:'#1f5fa8'},{n:'GAIS',c:'#1f6f4a'},{n:'Halmstads BK',c:'#1f5fa8'},
+  {n:'Hammarby IF',c:'#2e8b57'},{n:'IF Brommapojkarna',c:'#c0392b'},{n:'IF Elfsborg',c:'#f9d11a'},
+  {n:'IFK Göteborg',c:'#0a4ea2'},{n:'IFK Norrköping',c:'#1f7ac0'},{n:'IK Sirius',c:'#3f93da'},
+  {n:'Kalmar FF',c:'#c8151b'},{n:'Malmö FF',c:'#4aa3df'},{n:'Mjällby AIF',c:'#f6d000'},
+  {n:'Östers IF',c:'#c0392b'},
+  {n:'__custom__',c:'#ecaa3c'},
+];
+const PAL=['#ecaa3c','#3f93da','#2e8b57','#c0392b','#9b59b6','#e67e22'];
+
+/* ============ RÖSTBANK v2 (2026-07-04) ============
+   Skriven i Rahebs röst, destillerad ur 16 riktiga LinkedIn-inlägg
+   (korpus: corpus/linkedin-corpus-2026-07-04.md) + raheb_stilguide.md.
+   Kännetecken banken bär: beteendemönster-vokabulär, försiktig hedging
+   ("sällan en slump"), vad/varför-kontrasten, Observera-Förstå-Förändra,
+   triader, retoriska frågor. 4 varianter per plats och språk. */
+const BANK={
+  beredskap:{
+    sv:{strength:['laget går in i matcher med rätt skärpa och avgör ofta de tidiga lägena till sin fördel.',
+                  'beteendemönstret i matchinledningarna är tydligt: laget är mentalt på plats vid avspark och låter inte motståndaren sätta villkoren.',
+                  'första målet, de tidiga närkamperna, kommandot i inledningen. Mönstret återkommer match efter match, och det är sällan en slump.',
+                  'laget behöver ingen kvart för att vakna. Skärpan finns där från start, vilket ger kontroll istället för jakt.'],
+        risk:['laget kommer för långsamt in i matcherna och hamnar i underläge innan det vaknar.',
+              'motståndaren äger de första 15 minuterna oftare än laget. Beredskapen kommer först när underläget redan är ett faktum.',
+              'laget släpper in första målet i en omfattning som är svår att bortförklara. Frågan är inte om spelarna kan, utan varför skärpan inte finns där från avspark.',
+              'inledningarna kostar poäng. När analysen letar taktiska förklaringar är det lätt att missa att det handlar om mental startberedskap.'],
+        rec:['göra de första 15 minuterna till ett eget mål: en tydlig startrutin som sätter rätt skärpa direkt.',
+             'tydliggöra önskat beslutsbeteende i matchinledningen. Vilka aktioner vill vi se de första minuterna, och vem ansvarar för dem?',
+             'sätta ord på vad mental beredskap betyder i beteenden: första närkampen, första initiativet, första passningen framåt.',
+             'bygga en gemensam uppladdningsrutin och följa upp den, inte bara prata om att "komma igång snabbare".']},
+    en:{strength:['the team enters games sharp and often settles the early moments in its favour.',
+                  'the behavioural pattern in the opening phase is clear: the team is mentally present at kick-off and does not let the opponent set the terms.',
+                  'the first goal, the early duels, command of the opening. The pattern repeats match after match, and that is rarely a coincidence.',
+                  'this team does not need fifteen minutes to wake up. The sharpness is there from the start, which creates control instead of chasing.'],
+        risk:['the team starts too slowly and falls behind before it wakes up.',
+              'the opponent owns the first 15 minutes more often than the team does. Readiness only arrives once the deficit is already a fact.',
+              'the team concedes the first goal at a rate that is hard to explain away. The question is not whether the players can, but why the sharpness is not there from kick-off.',
+              'the openings cost points. When the analysis looks for tactical explanations, it is easy to miss that this is about mental readiness at the start.'],
+        rec:['make the first 15 minutes a target of their own: a clear starting routine that sets the right sharpness immediately.',
+             'define the decision behaviours you want in the opening phase. Which actions do we want in the first minutes, and who is responsible for them?',
+             'put words on what mental readiness looks like in behaviours: the first duel, the first initiative, the first forward pass.',
+             'build a shared pre-match routine and follow it up, rather than just talking about "starting faster".']}},
+  momentum:{
+    sv:{strength:['laget förvaltar medvind och trycker på när det väl tagit greppet.',
+                  'laget höjer nivån direkt efter eget mål och söker nästa istället för att förvalta. Det är ett beteende, inte en tillfällighet.',
+                  'när energin väl skiftar vet laget vad det ska göra med den: tempot hålls uppe och motståndarens svackor utnyttjas.',
+                  'laget avslutar inte matchen i huvudet efter ett mål. Fokus ligger kvar på nästa aktion, och det syns i resultaten.'],
+        risk:['laget slår sig till ro efter mål och bjuder tillbaka motståndaren i matchen.',
+              'minuterna direkt efter eget mål är lagets svagaste. Fokus släpper precis när greppet borde hårdna.',
+              'laget tappar tempo efter mål, och det är sällan taktik. Det ser ut som att matchen avslutas i huvudet långt före slutsignalen.',
+              'medvind förvaltas inte. När momentum väl finns där saknas beteendena som håller kvar det: tempot, initiativen, nästa aktion.'],
+        rec:['träna det mentala läget direkt efter ett mål: håll tempo och sök nästa istället för att förvalta.',
+             'sätta en tydlig regel för de fem minuterna efter mål. Fortsätt trycka, avsluta inte matchen i huvudet.',
+             'göra momentumskiften till ett eget analysområde: när skiftar energin, vilka beteenden följer, och vem tar ansvar?',
+             'lyfta fram spelarna som vågar ta plats när laget tvekar. Momentum byggs av individer som gör det oväntade.']},
+    en:{strength:['the team manages a lead well and keeps pushing once it has taken control.',
+                  'the team raises its level right after scoring and hunts the next goal instead of protecting. That is a behaviour, not a coincidence.',
+                  'when the energy shifts, the team knows what to do with it: the tempo stays up and the opponent’s dips are punished.',
+                  'the team does not finish the game in its head after scoring. Focus stays on the next action, and it shows in the results.'],
+        risk:['the team eases off after scoring and lets the opponent back into the game.',
+              'the minutes right after scoring are the team’s weakest. Focus drops exactly when the grip should tighten.',
+              'the team loses tempo after scoring, and it is rarely tactical. It looks like the game gets finished in the players’ heads long before the final whistle.',
+              'momentum is not being managed. When it arrives, the behaviours that keep it are missing: the tempo, the initiatives, the next action.'],
+        rec:['train the mental state right after a goal: keep the tempo and go for the next one instead of protecting.',
+             'set a clear rule for the five minutes after scoring. Keep pressing, do not finish the game in your heads.',
+             'make momentum shifts their own area of analysis: when does the energy shift, which behaviours follow, and who takes responsibility?',
+             'value the players who dare to take up space when the team hesitates. Momentum is built by individuals doing the unexpected.']}},
+  resiliens:{
+    sv:{strength:['laget tror på vändningen även i motgång och behåller sin plan under press.',
+                  'strukturen håller ihop efter baklängesmål. Kroppsspråket, energin och initiativen finns kvar, och det är precis där vändningar föds.',
+                  'laget skapar farliga lägen kort efter insläppta mål. Reaktionen på motgång är handling, inte ältande.',
+                  'underläge verkar vara en plan för det här laget, inte en känsla. Man vet vad de närmaste fem minuterna efter en motgång ska innehålla.'],
+        risk:['laget tappar tron i underläge och får svårt att resa sig efter en motgång.',
+              'efter ett insläppt mål blir besluten säkrare och initiativen färre. Det är ältandet och den fysiologiska anspänningen som styr, inte planen.',
+              'laget spelar för att inte förlora efter en motgång. Fokus hamnar på vad som ska undvikas snarare än vad som ska genomföras.',
+              'strukturen spricker efter baklängesmål och det tar för lång tid att hitta tillbaka. Utan ett gemensamt återställningsbeteende lämnas spelarna ensamma i stunden.'],
+        rec:['införa ett gemensamt återställningsbeteende efter insläppta mål: vad gör vi de närmaste fem minuterna?',
+             'öva vändningar i matchlika lägen så att underläge blir en plan, inte en känsla.',
+             'jobba med spelarnas fokus efter misstag: bort från ältandet, tillbaka till nästa aktion. Det går att träna, både på och utanför planen.',
+             'ge motgångarna en egen genomgång enligt Observera, Förstå, Förändra istället för att bara nöta önskade beteenden.']},
+    en:{strength:['the team believes in the comeback even in adversity and keeps to its plan under pressure.',
+                  'the structure holds together after conceding. The body language, the energy and the initiatives remain, and that is exactly where comebacks are born.',
+                  'the team creates real chances shortly after conceding. Its response to setbacks is action, not rumination.',
+                  'being behind seems to be a plan for this team, not a feeling. They know what the five minutes after a setback should contain.'],
+        risk:['the team loses belief when behind and struggles to recover after a setback.',
+              'after conceding, the decisions get safer and the initiatives fewer. Rumination and physical tension are steering, not the plan.',
+              'the team plays not to lose after a setback. Focus lands on what to avoid rather than what to execute.',
+              'the structure cracks after conceding and it takes too long to find the way back. Without a shared reset behaviour, the players are left alone in the moment.'],
+        rec:['introduce a shared reset behaviour after conceding: what do we do in the next five minutes?',
+             'rehearse comebacks in match-like situations so a deficit becomes a plan, not a feeling.',
+             'work on the players’ focus after mistakes: away from rumination, back to the next action. This can be trained, both on and off the pitch.',
+             'give setbacks their own review using Observe, Understand, Act instead of just repeating desired behaviours.']}},
+  stabilitet:{
+    sv:{strength:['laget håller en jämn nivå hela matchen och gör få billiga misstag sent.',
+                  'nivån ser likadan ut i minut 80 som i minut 20. Den sortens stabilitet över tid är ett beteendemönster, inte tur.',
+                  'ledningar försvaras moget och koncentrationen håller genom hela matchen. Få lag vinner så många "tråkiga" poäng.',
+                  'laget svarar på matchens skiften utan att tappa sin grundnivå. Det är stabiliteten som gör att övriga styrkor får verkan.'],
+        risk:['laget svänger i nivå och tappar greppet i avgörande skeden, ofta efter paus eller mot slutet.',
+              'första och andra halvlek ser ut som två olika lag. När nivån förändras så tydligt räcker inte den taktiska analysen, frågan är varför prestationen förändras.',
+              'billiga misstag dyker upp sent i matcherna. Det pekar mot koncentration och belastning snarare än fotbollskunskap.',
+              'nivån håller inte 90 minuter. Poäng tappas i slutskeden på ett sätt som återkommer för ofta för att vara slump.'],
+        rec:['införa mentala hållpunkter var 15:e minut som återställer fokus och håller nivån genom hela matchen.',
+             'analysera halvleksskiftena psykologiskt: vad förändras i beteendena efter paus, och varför?',
+             'bygga rutiner för slutskedet så att koncentrationen håller ända in i tilläggstid.',
+             'följa nivåsvängningarna över tid med enkla beteendemått, det som mäts går att förändra.']},
+    en:{strength:['the team holds a steady level for the whole match and makes few cheap mistakes late.',
+                  'minute 80 looks like minute 20. That kind of stability over time is a behavioural pattern, not luck.',
+                  'leads are defended maturely and concentration lasts the full match. Few teams win this many "boring" points.',
+                  'the team responds to the shifts of a match without losing its base level. That stability is what lets its other strengths matter.'],
+        risk:['the team swings in level and loses its grip at decisive moments, often after the break or late on.',
+              'the first and second halves look like two different teams. When the level changes that clearly, tactical analysis is not enough; the question is why the performance changes.',
+              'cheap mistakes appear late in games. That points to concentration and load rather than football knowledge.',
+              'the level does not last 90 minutes. Points are dropped late in a way that repeats too often to be chance.'],
+        rec:['introduce mental checkpoints every 15 minutes that reset focus and hold the level through the whole match.',
+             'analyse the half-time shifts psychologically: what changes in the behaviours after the break, and why?',
+             'build closing-stage routines so concentration lasts all the way into stoppage time.',
+             'track the swings over time with simple behavioural measures; what gets measured can be changed.']}},
+  stress:{
+    sv:{strength:['laget stänger matcher moget och fattar kloka beslut när det gäller som mest.',
+                  'i pressade lägen blir besluten inte sämre, och det är det tydligaste tecknet på god stresshantering.',
+                  'slutminuter med ledning hanteras med lugn: disciplinen håller, korten uteblir och bollen flyttas dit pressen inte når.',
+                  'laget spelar för att vinna även när det leder. Fokus ligger på vad som ska genomföras, inte på vad som ska undvikas.'],
+        risk:['laget tappar poäng från ledande positioner när pressen ökar i slutskedet.',
+              'när pressen ökar smalnar blicken. Bakåtpassarna blir fler, initiativen färre, och det är klassiska tecken på stress, inte på taktik.',
+              'laget spelar för att inte förlora när det leder. Den mentala växlingen från att vinna till att undvika kostar poäng i slutminuterna.',
+              'sena kort, sena straffsituationer, sena insläppta mål. Disciplinen under press är mönstret som återkommer, och det går att jobba med.'],
+        rec:['simulera slutminuter med ledning på träning: beslutsträning för att stänga matcher istället för att bjuda in press.',
+             'öva de sista tio minuterna med ledning så att laget vet exakt vad det ska göra när pressen kommer.',
+             'tydliggöra beslutsbeteendet i pressade lägen: vilka val är rätt i minut 85 med 1-0, och vem ansvarar för att de görs?',
+             'ge spelarna gemensamma mentala strategier för slutskeden, att ropa "håll lugnet!" är sällan en lösning.']},
+    en:{strength:['the team closes games maturely and makes smart decisions when it matters most.',
+                  'under pressure the decisions do not get worse, and that is the clearest sign of good stress management.',
+                  'closing minutes with a lead are handled calmly: the discipline holds, the cards stay away and the ball is moved where the press cannot reach.',
+                  'the team plays to win even when it is ahead. Focus stays on what to execute, not on what to avoid.'],
+        risk:['the team drops points from leading positions as pressure builds late in games.',
+              'when the pressure rises, the vision narrows. More back passes, fewer initiatives; classic signs of stress, not of tactics.',
+              'the team plays not to lose when it leads. That mental switch from winning to avoiding costs points in the closing minutes.',
+              'late cards, late penalty situations, late goals conceded. Discipline under pressure is the recurring pattern, and it can be worked on.'],
+        rec:['simulate closing minutes with a lead in training: decision practice to close games rather than inviting pressure.',
+             'rehearse the last ten minutes with a lead so the team knows exactly what to do when the pressure comes.',
+             'define the decision behaviours for high-pressure moments: which choices are right in minute 85 at 1-0, and who is responsible for making them?',
+             'give the players shared mental strategies for the closing stages; shouting "stay calm!" is rarely a solution.']}},
+};
+
+/* Observera-meningen: 3 varianter per band och språk, i Rahebs röst. {team}{idx}{tl}{ll} fylls i. */
+const OBS={
+  sv:{
+    high:['{team} visar en stark mental helhet med ett psyk-index på {idx} av 100. Profilen bärs av {tl}, medan {ll} sticker ut som den svagaste länken.',
+          '{team} har en mentalt mogen profil, psyk-index {idx} av 100. Tabellen visar resultat, men det är beteendemönster som dessa som skapar dem, och här är {tl} motorn. {ll} är området som fortfarande lämnar poäng på bordet.',
+          'psyk-index {idx} av 100 placerar {team} bland lagen som hanterar matchens kritiska skeden bäst. {tl} är signaturen; nästa nivå handlar om {ll}.'],
+    med:['{team} har en fungerande men ojämn mental profil, psyk-index {idx} av 100. {tl} är en tydlig tillgång, men {ll} drar ner helheten.',
+         '{team} landar på psyk-index {idx} av 100 med en profil som pendlar. {tl} bär laget, medan {ll} är den lucka som kostar poäng.',
+         'resultaten säger en sak, beteendemönstren en annan: {team} har mer att hämta. Index {idx} av 100, där {tl} håller hög nivå men {ll} gång på gång öppnar dörren för motståndaren.'],
+    low:['{team} uppvisar en mentalt sårbar profil med psyk-index {idx} av 100. Även {tl} räcker inte för att väga upp bristerna i {ll}.',
+         '{team} ligger på psyk-index {idx} av 100 och är mentalt sårbart. {tl} finns där, men {ll} måste åtgärdas innan resultaten kan vända.',
+         'när den taktiska analysen tar slut brukar analysen ta slut, men mönstret talar sitt tydliga språk: {team}, index {idx} av 100, tappar matcherna i {ll}. {tl} är basen att bygga vändningen på.']},
+  en:{
+    high:['{team} shows a strong mental profile with a psych index of {idx} out of 100. It is carried by {tl}, while {ll} stands out as the weakest link.',
+          '{team} has a mentally mature profile, psych index {idx} out of 100. The table shows results, but behavioural patterns like these create them, and {tl} is the engine. {ll} is the area still leaving points on the table.',
+          'a psych index of {idx} out of 100 places {team} among the teams that handle the critical moments best. {tl} is the signature; the next level is about {ll}.'],
+    med:['{team} has a functioning but uneven mental profile, psych index {idx} out of 100. {tl} is a clear asset, but {ll} drags the whole down.',
+         '{team} lands on a psych index of {idx} out of 100 with a profile that swings. {tl} carries the team, while {ll} is the gap that costs points.',
+         'the results say one thing, the behavioural patterns another: {team} has more to gain. Index {idx} out of 100, where {tl} holds a high level but {ll} keeps opening the door for the opponent.'],
+    low:['{team} shows a mentally vulnerable profile with a psych index of {idx} out of 100. Even {tl} is not enough to offset the weaknesses in {ll}.',
+         '{team} sits on a psych index of {idx} out of 100 and is mentally vulnerable. {tl} is there, but {ll} must be addressed before results can turn.',
+         'when the tactical analysis runs out, the analysis usually stops; here the pattern speaks clearly. {team}, index {idx} out of 100, loses its games in {ll}. {tl} is the base to build the turnaround on.']},
+};
+
+const UI={
+  sv:{htmlLang:'sv', tagline:'Psykologisk matchrapport',
+    inTitle:'Mata in matchsituationer', inLead:'20 mentala situationer → fem nyckelbeteenden → psyk-index och rapport.',
+    lblTeam:'Välj lag', lblMatches:'Antal matcher', lblColor:'Lagfärg', lblFilled:'Ifyllt', lblLive:'Live psyk-index',
+    gen:'Generera rapport', example:'Fyll i exempel', clear:'Rensa',
+    ja:'Ja', delvis:'Delvis', nej:'Nej', custom:'Egen rapport…', promptTeam:'Lagnamn:', ownTeam:'Eget lag',
+    analyzing:'Analyserar 20 matchsituationer…', reye:'Psykologisk profil', sub:'Allsvenskan 2026 · {n} matcher analyserade',
+    cap:'Psyk-index', bands:{high:'Stark mentalitet', med:'Stabil', low:'Sårbar'},
+    hObs:'❗ Observera', hUnd:'🧠 Förstå', hAct:'⭐ Förändra',
+    lblStrength:'✅ Styrka', lblRisk:'❗ Risk', lblRec:'⭐ Rekommendation',
+    should:'Laget bör', follow:'Följ upp enligt Observera → Förstå → Förändra.',
+    foot:'RM Sport Consulting AB · Prestationspsykologi', gen2:'Genererad {d}',
+    png:'Exportera PNG', pdf:'Skriv ut / PDF', copy:'Kopiera som text', copied:'Kopierat ✓',
+    disc:'Demo: analystexten byggs med regelbaserade mallar (din egen modell). Siffrorna är riktig beräkning. Den AI-tränade versionen skriver i din röst. Prototyp, inte en färdig produkt, inga garanterade resultat.',
+    emptyA:'Välj lag, fyll i matchsituationerna och tryck', emptyGen:'Generera rapport',
+    emptyB:'Eller tryck', emptyEx:'Fyll i exempel', emptyC:'för en snabb demo.',
+    of:'av', matches:'matcher', hashtags:'#Allsvenskan #Prestationspsykologi #Performance #SportsPsychology',
+    kObs:'Observera', kUnd:'Förstå', kAct:'Förändra'},
+  en:{htmlLang:'en', tagline:'Psychological match report',
+    inTitle:'Enter match situations', inLead:'20 mental situations → five key behaviours → psych index and report.',
+    lblTeam:'Select team', lblMatches:'Matches', lblColor:'Team colour', lblFilled:'Completed', lblLive:'Live psych index',
+    gen:'Generate report', example:'Fill example', clear:'Clear',
+    ja:'Yes', delvis:'Partly', nej:'No', custom:'Custom report…', promptTeam:'Team name:', ownTeam:'Own team',
+    analyzing:'Analysing 20 match situations…', reye:'Psychological profile', sub:'Allsvenskan 2026 · {n} matches analysed',
+    cap:'Psych index', bands:{high:'Strong mentality', med:'Stable', low:'Vulnerable'},
+    hObs:'❗ Observe', hUnd:'🧠 Understand', hAct:'⭐ Act',
+    lblStrength:'✅ Strength', lblRisk:'❗ Risk', lblRec:'⭐ Recommendation',
+    should:'The team should', follow:'Follow up using Observe → Understand → Act.',
+    foot:'RM Sport Consulting AB · Performance Psychology', gen2:'Generated {d}',
+    png:'Export PNG', pdf:'Print / PDF', copy:'Copy as text', copied:'Copied ✓',
+    disc:'Demo: the analysis text is built with rule-based templates (your own model). The numbers are a real calculation. The AI-trained version writes in your voice. Prototype, not a finished product, no guaranteed results.',
+    emptyA:'Select a team, fill in the match situations and press', emptyGen:'Generate report',
+    emptyB:'Or press', emptyEx:'Fill example', emptyC:'for a quick demo.',
+    of:'of', matches:'matches', hashtags:'#Allsvenskan #PerformancePsychology #Performance #SportsPsychology',
+    kObs:'Observe', kUnd:'Understand', kAct:'Act'},
+};
+
+let scores={};
+AXES.forEach(a=>scores[a.key]=[null,null,null,null]);
+let matchCount=8, teamName='IK Sirius', teamColor='#3f93da', lang='sv', customName='';
+let lastReport=null; // så vi kan rendera om på språkbyte
+
+const T=()=>UI[lang];
+const teamSel=document.getElementById('team');
+
+function buildTeamOptions(){
+  const cur=teamSel.value;
+  teamSel.innerHTML='';
+  TEAMS.forEach((t,i)=>{const o=document.createElement('option');o.value=i;
+    o.textContent=t.n==='__custom__'?T().custom:t.n;teamSel.appendChild(o);});
+  if(cur!=='')teamSel.value=cur;
+}
+teamSel.onchange=()=>{const t=TEAMS[+teamSel.value];
+  if(t.n==='__custom__'){customName=prompt(T().promptTeam,customName||'')||T().ownTeam;teamName=customName;}
+  else{teamName=t.n;teamColor=t.c;}
+  setColor(teamColor);renderSwatches();};
+
+function renderSwatches(){const el=document.getElementById('swatches');el.innerHTML='';
+  PAL.forEach(c=>{const s=document.createElement('div');s.className='sw'+(c.toLowerCase()===teamColor.toLowerCase()?' sel':'');s.style.background=c;s.onclick=()=>{teamColor=c;setColor(c);renderSwatches();};el.appendChild(s);});}
+function setColor(c){teamColor=c;document.documentElement.style.setProperty('--accent',c);}
+
+document.getElementById('mplus').onclick=()=>{matchCount=Math.min(38,matchCount+1);document.getElementById('mcount').textContent=matchCount;};
+document.getElementById('mminus').onclick=()=>{matchCount=Math.max(1,matchCount-1);document.getElementById('mcount').textContent=matchCount;};
+
+function buildQuestionCards(){
+  const qc=document.getElementById('qcards');qc.innerHTML='';
+  AXES.forEach((a,ai)=>{
+    const card=document.createElement('div');card.className='qcard';
+    let qs='';
+    Q[a.key].forEach((q,qi)=>{
+      const v=scores[a.key][qi];
+      qs+=`<div class="q"><span class="qt">${q[lang]}</span>
+        <span class="seg" data-ax="${a.key}" data-qi="${qi}">
+          <button class="ja${v===2?' on':''}" data-v="2">${T().ja}</button>
+          <button class="delvis${v===1?' on':''}" data-v="1">${T().delvis}</button>
+          <button class="nej${v===0?' on':''}" data-v="0">${T().nej}</button>
+        </span></div>`;
+    });
+    card.innerHTML=`<h3><span class="nr">${ai+1}</span>${a.head[lang]}</h3>${qs}`;
+    qc.appendChild(card);
+  });
+}
+document.getElementById('qcards').addEventListener('click',e=>{
+  const b=e.target.closest('.seg button');if(!b)return;
+  const seg=b.parentElement;const ax=seg.dataset.ax,qi=+seg.dataset.qi,v=+b.dataset.v;
+  scores[ax][qi]=v;
+  seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  updateLive();
+});
+
+function qVal(ax,qi){const v=scores[ax][qi];if(v===null)return null;let p=v*50;if(Q[ax][qi].inv)p=100-p;return p;}
+function axisScore(ax){const vals=Q[ax].map((_,qi)=>qVal(ax,qi)).map(x=>x===null?50:x);return Math.round(vals.reduce((s,x)=>s+x,0)/vals.length);}
+function indexScore(){let s=0;AXES.forEach(a=>s+=a.w*axisScore(a.key));return Math.round(s);}
+function filledCount(){let n=0;AXES.forEach(a=>Q[a.key].forEach((_,qi)=>{if(scores[a.key][qi]!==null)n++;}));return n;}
+function updateLive(){const f=filledCount();document.getElementById('filled').textContent=f;document.getElementById('livei').textContent=f>0?indexScore():'–';}
+
+function band(i){if(i>=65)return{c:'#2e8b57',k:'high'};if(i>=45)return{c:'#ecaa3c',k:'med'};return{c:'#c0392b',k:'low'};}
+function pick(arr,seed){return arr[Math.abs(seed)%arr.length];}
+
+function radarSVG(vals){
+  const cx=150,cy=145,R=100,n=5;
+  const ang=i=>(-Math.PI/2)+i*2*Math.PI/n;
+  const pt=(i,r)=>[cx+Math.cos(ang(i))*r,cy+Math.sin(ang(i))*r];
+  let rings='';[0.33,0.66,1].forEach(f=>{const p=AXES.map((_,i)=>pt(i,R*f).map(x=>x.toFixed(1)).join(',')).join(' ');rings+=`<polygon points="${p}" fill="none" stroke="#1d2c3e" stroke-width="1"/>`;});
+  let spokes='',labels='';
+  AXES.forEach((a,i)=>{const[x,y]=pt(i,R);spokes+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#1d2c3e"/>`;
+    const[lx,ly]=pt(i,R+16);const anc=Math.abs(lx-cx)<6?'middle':(lx>cx?'start':'end');
+    labels+=`<text x="${lx.toFixed(1)}" y="${(ly+4).toFixed(1)}" fill="#6c8097" font-size="9.5" font-weight="700" text-anchor="${anc}" font-family="Inter,sans-serif">${a.label[lang].split(' ')[0]}</text>`;});
+  const dp=AXES.map((a,i)=>pt(i,R*vals[i]/100).map(x=>x.toFixed(1)).join(',')).join(' ');
+  let dots='';AXES.forEach((a,i)=>{const[x,y]=pt(i,R*vals[i]/100);dots+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4" fill="${teamColor}"/>`;});
+  return `<svg class="radar" viewBox="0 0 300 290" xmlns="http://www.w3.org/2000/svg">${rings}${spokes}
+    <polygon points="${dp}" fill="${teamColor}" fill-opacity="0.26" stroke="${teamColor}" stroke-width="2.5"/>${dots}${labels}</svg>`;
+}
+
+function computeReport(){
+  const vals=AXES.map(a=>axisScore(a.key));
+  const idx=indexScore();const bd=band(idx);
+  let maxI=0,minI=0;vals.forEach((v,i)=>{if(v>vals[maxI])maxI=i;if(v<vals[minI])minI=i;});
+  return {vals,idx,bd,maxI,minI};
+}
+
+function fmt(str,map){return str.replace(/\{(\w+)\}/g,(_,k)=>map[k]!==undefined?map[k]:'{'+k+'}');}
+function sentence(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+
+function renderReportInto(el){
+  const r=lastReport;const L=T();
+  const top=AXES[r.maxI],low=AXES[r.minI];
+  const seed=r.vals.reduce((s,v)=>s+v,0)+r.maxI*7+r.minI*13;
+  const tl=top.label[lang].toLowerCase(), ll=low.label[lang].toLowerCase();
+  const obs=sentence(fmt(pick(OBS[lang][r.bd.k],seed),{team:teamName,idx:r.idx,tl,ll}));
+  const strengthTxt=pick(BANK[top.key][lang].strength,seed);
+  const riskTxt=pick(BANK[low.key][lang].risk,seed+5);
+  const recTxt=pick(BANK[low.key][lang].rec,seed+11);
+  const strength=`<span class="hl">${L.lblStrength} — ${top.label[lang]} (${r.vals[r.maxI]}/100):</span> ${strengthTxt}`;
+  const risk=`<span class="hl">${L.lblRisk} — ${low.label[lang]} (${r.vals[r.minI]}/100):</span> ${riskTxt}`;
+  const rec=`<span class="hl">${L.lblRec}:</span> ${L.should} ${recTxt} ${L.follow}`;
+  const bars=AXES.map((a,i)=>`<div class="bar"><div class="bt"><span class="bn">${a.label[lang]}</span><span class="bv">${r.vals[i]}</span></div><div class="track"><i data-w="${r.vals[i]}"></i></div></div>`).join('');
+  el.innerHTML=`
+    <div class="report fade" id="report">
+      <div class="rhead">
+        <div>
+          <div class="reye">${L.reye}</div>
+          <div class="rteam">${esc(teamName)}</div>
+          <div class="rsub">${fmt(L.sub,{n:matchCount})}</div>
+        </div>
+        <div class="ibadge">
+          <div class="num" id="inum" style="color:${r.bd.c}">0</div>
+          <div class="cap">${L.cap}</div>
+          <div class="lab" style="color:${r.bd.c};border-color:${r.bd.c}66">${L.bands[r.bd.k]}</div>
+        </div>
+      </div>
+      <div class="rmid">
+        <div class="radar-box">${radarSVG(r.vals)}</div>
+        <div class="bars">${bars}</div>
+      </div>
+      <div class="analysis">
+        <div class="ablock"><h4>${L.hObs}</h4><p>${obs}</p></div>
+        <div class="ablock"><h4>${L.hUnd}</h4><p>${strength}</p><p style="margin-top:8px">${risk}</p></div>
+        <div class="ablock"><h4>${L.hAct}</h4><p>${rec}</p></div>
+      </div>
+      <div class="rfoot"><span>${L.foot}</span><span>${fmt(L.gen2,{d:dateStr()})}</span></div>
+    </div>
+    <div class="exportrow">
+      <button id="png">${L.png}</button>
+      <button id="pdf">${L.pdf}</button>
+      <button id="copy">${L.copy}</button>
+    </div>
+    <div class="disclaimer">${L.disc}</div>`;
+  const inum=document.getElementById('inum');let cur=0;const tgt=r.idx;const step=Math.max(1,Math.round(tgt/28));
+  const iv=setInterval(()=>{cur+=step;if(cur>=tgt){cur=tgt;clearInterval(iv);}inum.textContent=cur;},22);
+  requestAnimationFrame(()=>{setTimeout(()=>{document.querySelectorAll('.track i').forEach(el=>el.style.width=el.dataset.w+'%');},60);});
+  document.getElementById('copy').onclick=()=>copyText();
+  document.getElementById('pdf').onclick=()=>window.print();
+  document.getElementById('png').onclick=()=>exportPNG();
+}
+
+function generate(){
+  const out=document.getElementById('out');const L=T();
+  out.innerHTML=`<div class="report"><div class="analyzing"><span class="spin"></span> ${L.analyzing}</div></div>`;
+  setTimeout(()=>{lastReport=computeReport();renderReportInto(out);},820);
+}
+
+function copyText(){
+  const r=lastReport;const L=T();
+  const top=AXES[r.maxI],low=AXES[r.minI];
+  const seed=r.vals.reduce((s,v)=>s+v,0)+r.maxI*7+r.minI*13;
+  const tl=top.label[lang].toLowerCase(), ll=low.label[lang].toLowerCase();
+  const obs=sentence(fmt(pick(OBS[lang][r.bd.k],seed),{team:teamName,idx:r.idx,tl,ll}));
+  const strengthTxt=pick(BANK[top.key][lang].strength,seed);
+  const riskTxt=pick(BANK[low.key][lang].risk,seed+5);
+  const recTxt=pick(BANK[low.key][lang].rec,seed+11);
+  const lines=[
+    `${teamName.toUpperCase()} — ${L.reye} (Allsvenskan 2026)`,``,
+    `🧠 ${L.cap}: ${r.idx}/100 (${L.bands[r.bd.k]})`,``,
+    ...AXES.map((a,i)=>`⚽ ${a.label[lang]}: ${r.vals[i]}/100`),``,
+    `${L.kObs}: ${obs}`,
+    `${L.kUnd}: ${top.label[lang]} — ${strengthTxt} ${low.label[lang]} — ${riskTxt}`,
+    `${L.kAct}: ${L.should} ${recTxt} ${L.follow}`,``,
+    L.hashtags,
+  ];
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>{const b=document.getElementById('copy');const o=b.textContent;b.textContent=L.copied;setTimeout(()=>b.textContent=o,1500);});
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+function exportPNG(){
+  const card=document.getElementById('report');const rect=card.getBoundingClientRect();
+  const w=Math.ceil(rect.width),h=Math.ceil(rect.height);
+  const data=`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml" style="width:${w}px">${new XMLSerializer().serializeToString(card.cloneNode(true))}</div></foreignObject></svg>`;
+  const img=new Image();const url=URL.createObjectURL(new Blob([data],{type:'image/svg+xml;charset=utf-8'}));
+  img.onload=()=>{const c=document.createElement('canvas');c.width=w*2;c.height=h*2;const x=c.getContext('2d');x.scale(2,2);x.fillStyle='#070d16';x.fillRect(0,0,w,h);x.drawImage(img,0,0);URL.revokeObjectURL(url);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='matchrapport.png';a.click();});};
+  img.onerror=()=>alert(lang==='sv'?'Tips: använd Skriv ut / PDF eller ta en skärmdump.':'Tip: use Print / PDF or take a screenshot.');
+  img.src=url;
+}
+
+function dateStr(){return new Date().toLocaleDateString(lang==='sv'?'sv-SE':'en-GB');}
+
+function showEmpty(){const L=T();document.getElementById('out').innerHTML=`<div class="report"><div class="empty">
+  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="${teamColor}" stroke-width="1.2"><polygon points="12,3 21,9.5 17.5,20 6.5,20 3,9.5"/><polygon points="12,8 16.5,11.5 14.7,17 9.3,17 7.5,11.5"/></svg>
+  <div style="font-size:15px;color:#8da0b3;max-width:300px">${L.emptyA} <b style="color:#f1f6fb">${L.emptyGen}</b>.<br><br>${L.emptyB} <b style="color:#f1f6fb">${L.emptyEx}</b> ${L.emptyC}</div></div></div>`;}
+
+function applyLang(){
+  const L=T();
+  document.documentElement.lang=L.htmlLang;
+  document.getElementById('tagline').textContent=L.tagline;
+  document.getElementById('inTitle').textContent=L.inTitle;
+  document.getElementById('inLead').textContent=L.inLead;
+  document.getElementById('lblTeam').textContent=L.lblTeam;
+  document.getElementById('lblMatches').textContent=L.lblMatches;
+  document.getElementById('lblColor').textContent=L.lblColor;
+  document.getElementById('lblFilled').textContent=L.lblFilled;
+  document.getElementById('lblLive').textContent=L.lblLive;
+  document.getElementById('gen').textContent=L.gen;
+  document.getElementById('example').textContent=L.example;
+  document.getElementById('clear').textContent=L.clear;
+  buildTeamOptions();
+  buildQuestionCards();
+  if(lastReport)renderReportInto(document.getElementById('out'));
+  else showEmpty();
+}
+
+document.getElementById('gen').onclick=generate;
+document.getElementById('clear').onclick=()=>{AXES.forEach(a=>scores[a.key]=[null,null,null,null]);buildQuestionCards();lastReport=null;updateLive();showEmpty();};
+document.getElementById('example').onclick=()=>{
+  const presets={beredskap:[2,1,2,1],momentum:[2,2,1,2],resiliens:[1,1,1,0],stabilitet:[1,2,1,1],stress:[1,1,0,1]};
+  AXES.forEach(a=>{scores[a.key]=presets[a.key].slice();});
+  buildQuestionCards();updateLive();generate();
+};
+document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.dataset.l===lang)return;
+  document.querySelectorAll('#lang button').forEach(x=>x.classList.remove('on'));b.classList.add('on');lang=b.dataset.l;applyLang();});
+
+// init
+buildTeamOptions();teamSel.value=String(TEAMS.findIndex(t=>t.n==='IK Sirius'));
+setColor(teamColor);renderSwatches();buildQuestionCards();updateLive();
+document.getElementById('example').click();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verktyg för Raheb Muftee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1628;
+    --cream:#F7F3EE;
+    --blue:#1A6BFF;
+    --muted:rgba(247,243,238,0.62);
+    --card:rgba(255,255,255,0.04);
+    --line:rgba(255,255,255,0.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--navy);color:var(--cream);width:100%;overflow-x:hidden}
+  body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;
+    padding:56px 22px 72px;display:flex;flex-direction:column;align-items:center}
+  .wrap{width:100%;max-width:620px}
+  h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,7vw,44px);
+    line-height:1.12;letter-spacing:-0.01em;margin-bottom:14px}
+  .lede{color:var(--muted);font-size:16px;max-width:52ch;margin-bottom:40px}
+  .cards{display:flex;flex-direction:column;gap:14px}
+  a.card{display:block;text-decoration:none;color:inherit;background:var(--card);
+    border:1px solid var(--line);border-radius:14px;padding:22px 22px;
+    transition:border-color .18s ease,background .18s ease,transform .18s ease}
+  a.card:hover,a.card:focus-visible{border-color:var(--blue);background:rgba(26,107,255,0.07);
+    transform:translateY(-2px);outline:none}
+  .card .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+  .card h2{font-family:'Inter',sans-serif;font-weight:600;font-size:19px;letter-spacing:-0.01em}
+  .card .go{color:var(--blue);font-weight:600;font-size:14px;white-space:nowrap}
+  .card p{color:var(--muted);font-size:14.5px;margin:0}
+  .foot{margin-top:44px;color:var(--muted);font-size:13px}
+  .foot b{color:var(--cream);font-weight:600}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Verktyg för Raheb Muftee</h1>
+    <p class="lede">Tre demoversioner byggda för RM Sport Consulting. De fungerar i mobilen, men är bäst på dator.</p>
+    <nav class="cards">
+      <a class="card" href="indexmataren.html">
+        <div class="top"><h2>Indexmätaren (testet)</h2><span class="go">Öppna</span></div>
+        <p>Det interaktiva testet som mäter mental prestation under press och fångar upp leads.</p>
+      </a>
+      <a class="card" href="matchrapport.html">
+        <div class="top"><h2>Matchrapporten</h2><span class="go">Öppna</span></div>
+        <p>Mata in matchsituationer och få ett live psyk-index att dela med spelaren.</p>
+      </a>
+      <a class="card" href="linkedin-audit-och-roadmap.html">
+        <div class="top"><h2>LinkedIn-analysen</h2><span class="go">Öppna</span></div>
+        <p>Genomgång av din LinkedIn med konkreta utkast och en plan för tillväxt.</p>
+      </a>
+    </nav>
+    <p class="foot">Byggt av <b>Ikapp</b> för Raheb Muftee. Exempelfrågorna du ser byts mot dina egna.</p>
+  </main>
+</body>
+</html>
