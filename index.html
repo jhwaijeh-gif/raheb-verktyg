@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a1622">
+<meta name="color-scheme" content="dark">
 <meta name="robots" content="noindex">
 <title>Matchrapport · RM Sport Consulting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,13 +23,13 @@
   *{box-sizing:border-box;margin:0;padding:0}
   /* Mörk bakgrund även utanför body (overscroll/safe areas på mobil) —
      annars blixtrar vitt högst upp och längst ner på telefoner. */
-  html{background:#0a1622}
+  html{background:#0a1622;color-scheme:dark}
   /* Mobil: registrera tryck direkt (ingen dubbeltrycks-väntan) och ingen grå blink. */
   button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   body{font-family:var(--font);color:var(--txt);-webkit-font-smoothing:antialiased;line-height:1.5;
     background:radial-gradient(1100px 640px at 85% -12%,rgba(236,170,60,.07),transparent 60%),
       radial-gradient(900px 600px at -5% 115%,rgba(46,139,87,.08),transparent 55%),
-      linear-gradient(160deg,var(--bg),var(--bg2));min-height:100vh;min-height:100dvh}
+      linear-gradient(160deg,var(--bg),var(--bg2));background-color:#0a1622;min-height:100vh;min-height:100dvh}
   .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;border-bottom:1px solid var(--line)}
   /* Mobil: företagsnamnet följer med ner — glasad topprad fäst i toppen. */
   @media(max-width:900px){
