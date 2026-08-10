@@ -216,7 +216,7 @@
         <div class="legend">Skatta laget i senaste matchen, från <b>Aldrig</b> till <b>Nästan alltid</b>. <b>Ej obs.</b> betyder att beteendet inte gick att observera och räknas inte in i poängen.</div>
         <div id="qcards"></div>
         <div class="sticky">
-          <div class="meta"><span>Besvarat: <b id="filled">0</b>/25</span><span>Mentalt index: <b id="livei">–</b></span></div>
+          <div class="meta"><span>Besvarat: <b id="filled">0</b>/25</span><span>Index: <b id="livei">–</b></span></div>
           <div class="btns">
             <button class="primary" id="gen">Generera rapport</button>
             <button class="ghost" id="example">Fyll i exempel</button>
@@ -262,7 +262,7 @@ const CATS=[
      {t:'Spelarna tog ansvar för att förändra matchbilden när det behövdes.', tag:'ansvaret för att förändra matchbilden'},
      {t:'Laget visade en vilja att hitta lösningar även när första planen inte fungerade.', tag:'viljan att hitta nya lösningar'}]},
   {key:'fokus', label:'Fokus & beslutsfattande', short:'Fokus',
-   lead:'Hur bra fungerade den mentala prestationen?',
+   lead:'Hur bra fungerade fokus och beslutsfattandet?',
    items:[
      {t:'Laget behöll fokus under hela matchen.', tag:'fokus över hela matchen'},
      {t:'Misstag följdes snabbt av en ny konstruktiv aktion.', tag:'nästa aktion efter misstag'},
@@ -320,7 +320,7 @@ const CATBANK={
          'När pressen ökar väljer spelarna det trygga före det modiga. Fokus hamnar på vad som ska undvikas, inte på vad som ska genomföras.',
          'Ansvaret för att förändra matchbilden landar hos för få. Laget väntar på att någon annan ska göra det.']},
   fokus:{
-    high:['Fokus håller genom hela matchen och besluten förblir tydliga även under hög press. Det är den mentala prestationens kärna.',
+    high:['Fokus håller genom hela matchen och besluten förblir tydliga även under hög press. Det är prestationens kärna.',
           'Misstag följs snabbt av en ny konstruktiv aktion. Laget fastnar inte i det som redan hänt.',
           'Yttre händelser får inte fäste: domslut, publik och motståndare lämnas utanför prestationen.'],
     med:['Fokus håller i långa perioder men släpper i enskilda skeden. Ofta räcker de skedena för att avgöra matchen.',
@@ -363,18 +363,18 @@ const CATBANK={
 
 /* Observera-meningen överst: {club} {idx} {tl} {ll} fylls i. */
 const OBSBANK={
-  high:['{club} visar en stark mental helhet i matchen, index {idx} av 100. Profilen bärs av {tl}, medan {ll} är området med mest kvar att hämta.',
-        '{club} gör en mentalt mogen match, index {idx} av 100. Det är beteendemönster som dessa som skapar resultat över tid. {tl} är motorn, {ll} nästa steg.',
+  high:['{club} visar en stark helhet i matchen, index {idx} av 100. Profilen bärs av {tl}, medan {ll} är området med mest kvar att hämta.',
+        '{club} spelar en mogen match, index {idx} av 100. Det är beteendemönster som dessa som skapar resultat över tid. {tl} är motorn, {ll} nästa steg.',
         'Index {idx} av 100. {club} hanterar matchens kritiska skeden väl. {tl} är signaturen i den här matchen, {ll} lämnar fortfarande poäng på bordet.'],
-  med:['{club} visar en fungerande men ojämn mental prestation, index {idx} av 100. {tl} är en tydlig tillgång, medan {ll} drar ner helheten.',
+  med:['{club} visar en fungerande men ojämn prestation, index {idx} av 100. {tl} är en tydlig tillgång, medan {ll} drar ner helheten.',
        '{club} landar på index {idx} av 100 i en match som pendlar. {tl} bär laget, {ll} är luckan som motståndaren hittar.',
        'Oavsett resultat är beteendemönstren tydliga: {club} har mer att hämta. Index {idx} av 100, där {tl} håller nivån men {ll} öppnar dörren.'],
-  low:['{club} visar en mentalt sårbar match, index {idx} av 100. Även {tl} räcker inte för att väga upp {ll}.',
+  low:['{club} visar en sårbar match, index {idx} av 100. Även {tl} räcker inte för att väga upp {ll}.',
        'Index {idx} av 100. Mönstret i matchen är tydligt: {ll} ger vika först. {tl} är basen att bygga vändningen på.',
-       '{club} tappar matchen mentalt i {ll}, index {idx} av 100. När den taktiska analysen tar slut är det här analysen behöver börja.'],
-  even:['{club} visar en jämn mental profil i matchen, index {idx} av 100. Ingen kategori sticker ut åt något håll, och just därför är helheten den intressanta frågan.',
-        'Index {idx} av 100, jämnt över alla kategorier. {club} har en balanserad mental prestation i den här matchen. Nästa steg är att lyfta hela nivån, inte en enskild del.'],
-  single:['Endast {tl} gick att observera i den här matchen, {idx} av 100. En hel mental profil behöver fler observerbara kategorier, men mönstret i {tl} är en start.'],
+       '{club} tappar greppet i {ll}, index {idx} av 100. När den taktiska analysen tar slut är det här analysen behöver börja.'],
+  even:['{club} visar en jämn profil i matchen, index {idx} av 100. Ingen kategori sticker ut åt något håll, och just därför är helheten den intressanta frågan.',
+        'Index {idx} av 100, jämnt över alla kategorier. {club} har en balanserad prestation i den här matchen. Nästa steg är att lyfta hela nivån, inte en enskild del.'],
+  single:['Endast {tl} gick att observera i den här matchen, {idx} av 100. En hel profil behöver fler observerbara kategorier, men mönstret i {tl} är en start.'],
 };
 
 /* ============ TIPSBANK (2026-07-23, rev 2026-07-31) ============
@@ -464,7 +464,7 @@ function chooseVariant(catKey,bk,bestI,worstI,seed){
   return Math.abs(seed)%defs.length;
 }
 
-const BANDS={high:'Stark mental prestation', med:'Stabilt, mer att hämta', low:'Sårbar'};
+const BANDS={high:'Stark prestation', med:'Stabilt, mer att hämta', low:'Sårbar'};
 const STORE='rm-matchrapport-v2';
 const TIPSTORE='rm-matchrapport-tips-v1';
 
@@ -735,7 +735,7 @@ function renderReportInto(el){
         </div>
         <div class="ibadge">
           <div class="num" id="inum" style="color:${r.bd.c}">0</div>
-          <div class="cap">Mentalt index</div>
+          <div class="cap">Index</div>
           <div class="lab" style="color:${r.bd.c};border-color:${r.bd.c}66">${BANDS[r.bd.k]}</div>
         </div>
       </div>
@@ -810,7 +810,7 @@ function copyText(){
   const r=lastReport;if(!r)return;
   const lines=[
     `${r.club.toUpperCase()} · PSYKOLOGISK MATCHRAPPORT`,``,
-    `🧠 Mentalt index: ${r.idx}/100 (${BANDS[r.bd.k]})`,``,
+    `🧠 Index: ${r.idx}/100 (${BANDS[r.bd.k]})`,``,
     ...r.scores.map(s=>`⚽ ${s.cat.label}: ${s.score===null?'Ej observerbart':s.score+'/100'}`),``,
     `Observera: ${r.obs}`,``,
     ...r.rows.map(row=>`${row.cat.label}: ${row.txt}`),``,
